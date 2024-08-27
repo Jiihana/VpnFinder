@@ -3,32 +3,52 @@ import FilmSearchButton from './FilmSearchButton';
 
 const Accueil = () => {
     return (
-        <Stack
-            sx={{
-                width: '35%',
-                height: '35%',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                backgroundColor: colors.blue[200],
-                marginRight: '5%'
-            }}
+        <Box
             display="flex"
+            sx={{
+                minHeight: '100%',
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'start',
+                marginTop: '5%'
+            }}
         >
             <Stack
-                spacing={2}
+                spacing={20}
                 sx={{
-                    width: '100%',
-                    height: '100%',
-                    alignItems: 'start',
-                    justifyContent: 'flex-start'
+                    width: '50%',
+                    height: 'auto',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: '5%',
+                    display: 'flex'
                 }}
-                display="flex"
             >
-                <Typography variant="h1">VPN Finder</Typography>
-                <Typography variant="h3">Lorem ipsum pouet pouet</Typography>
+                <Stack
+                    spacing={1}
+                    sx={{
+                        width: '100%',
+                        height: '100%',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        display: 'flex'
+                    }}
+                >
+                    <Typography variant="h1">VPN Finder</Typography>
+                    <Typography variant="h3">Lorem ipsum pouet pouet</Typography>
+                </Stack>
+                <Box
+                    sx={{
+                        width: '100%',
+                        height: 'auto',
+                        paddingLeft: '5%',
+                        display: 'flex'
+                    }}
+                >
+                    <FilmSearchButton></FilmSearchButton>
+                </Box>
             </Stack>
-            <FilmSearchButton></FilmSearchButton>
-        </Stack>
+        </Box>
     );
 };
 

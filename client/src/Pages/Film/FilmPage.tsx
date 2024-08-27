@@ -32,7 +32,7 @@ const FilmPage = () => {
     return (
         <Stack
             sx={{
-                width: '100%',
+                width: 'auto',
                 height: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',

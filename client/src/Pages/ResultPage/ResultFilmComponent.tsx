@@ -1,16 +1,28 @@
 import { Box, colors, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ResultFilmComponent = () => {
+    const navigate = useNavigate();
+
+    const [filmName, setFilmName] = useState('Avengers');
+
+    const navigateToFilmPage = () => {
+        console.log('navigate to film');
+        navigate(`/film/${filmName}`);
+    };
     return (
         <Stack
             spacing={1}
             direction="row"
+            onClick={navigateToFilmPage}
             sx={{
                 width: '100%',
                 backgroundColor: 'rgba(1, 1, 1, 0.5)',
                 border: '2px solid white',
-                borderRadius: '40px',
-                padding: '0.5%'
+                borderRadius: '20px',
+                padding: '0.5%',
+                cursor: 'pointer'
             }}
         >
             <Box
@@ -34,7 +46,7 @@ const ResultFilmComponent = () => {
                 }}
             >
                 <Stack>
-                    <Typography variant="h3">Avengers</Typography>
+                    <Typography variant="h3">{filmName}</Typography>
                     <Typography variant="h6">12/01/2024</Typography>
                 </Stack>
                 <Typography variant="h6">

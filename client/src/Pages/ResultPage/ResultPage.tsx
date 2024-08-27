@@ -5,24 +5,24 @@ import ResultFilmComponent from './ResultFilmComponent';
 const ResultPage = () => {
     return (
         <Stack
+            spacing={15}
             sx={{
                 width: '100%',
                 height: 'auto',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'start',
+                display: 'flex'
             }}
-            display="flex"
-            spacing={25}
         >
             <Stack
                 display="flex"
+                spacing={10}
                 sx={{
                     width: '100%',
-                    height: '100%',
+                    height: 'auto',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'start'
                 }}
-                spacing={10}
             >
                 <Stack
                     display="flex"
@@ -43,7 +43,8 @@ const ResultPage = () => {
                     sx={{
                         width: '50%',
                         height: 'auto',
-                        paddingLeft: '8%'
+                        paddingLeft: '3%',
+                        display: 'flex'
                     }}
                 >
                     <FilmSearchButton />

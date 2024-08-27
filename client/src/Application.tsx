@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Accueil from './Pages/Home/Home';
 import ResultPage from './Pages/ResultPage/ResultPage';
 import FilmPage from './Pages/Film/FilmPage';
+import Home from './Pages/Home/Home';
 
 export interface IApplicationProps {}
 
@@ -22,20 +23,19 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
                     backgroundSize: 'auto',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
+                    backgroundAttachment: 'fixed',
                     minHeight: '100vh',
-                    width: '100vw',
-                    justifyContent: 'center',
-                    alignItems: 'start',
-                    backgroundAttachment: 'fixed'
+                    width: '100vw'
                 }}
             >
                 <CssBaseline />
 
                 <Router>
                     <Routes>
-                        <Route path="/" element={<FilmPage />}></Route>
+                        <Route path="/" element={<Home />}></Route>
 
-                        <Route path="/xxxx/:xxxxx" element={<Accueil />}></Route>
+                        <Route path="/result/:search" element={<ResultPage />}></Route>
+                        <Route path="/film/:filmName" element={<FilmPage />}></Route>
                     </Routes>
                 </Router>
             </Box>

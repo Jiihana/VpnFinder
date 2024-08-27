@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 const FilmSearchButton = () => {
-    const background = 'url(/images/buttons/menuButton1.png)';
+    const navigate = useNavigate();
 
     const [inputValue, setInputValue] = useState('');
 
@@ -12,10 +12,8 @@ const FilmSearchButton = () => {
         setInputValue(event.target.value);
     };
 
-    const navigate = useNavigate();
-
-    const handleJoinGame = async () => {
-        navigate(`/game/${inputValue}`);
+    const navigateToResults = async () => {
+        navigate(`/result/${inputValue}`);
     };
 
     return (
@@ -24,7 +22,9 @@ const FilmSearchButton = () => {
             direction="row"
             sx={{
                 width: '100%',
-                height: 'auto'
+                height: 'auto',
+                alignItems: 'center',
+                justifyContent: 'center'
             }}
         >
             <TextField
@@ -44,11 +44,12 @@ const FilmSearchButton = () => {
                 color="primary"
                 sx={{
                     width: 'auto',
-                    height: 'auto',
+                    height: '100%',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}
+                onClick={navigateToResults}
             >
                 <SearchIcon sx={{ fontSize: '40px' }} />
             </Button>
