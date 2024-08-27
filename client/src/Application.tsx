@@ -1,9 +1,10 @@
 import React from 'react';
-import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
+import { ThemeProvider, createTheme, CssBaseline, Box, colors } from '@mui/material';
 import { themeOptions } from './Theme/Theme';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Accueil from './Pages/Home/Home';
 import ResultPage from './Pages/ResultPage/ResultPage';
+import FilmPage from './Pages/Film/FilmPage';
 
 export interface IApplicationProps {}
 
@@ -18,20 +19,21 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
                 display="flex"
                 sx={{
                     backgroundImage: 'url(/images/pages/home.png)',
-                    backgroundSize: 'cover',
+                    backgroundSize: 'auto',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    height: '100vh',
+                    minHeight: '100vh',
                     width: '100vw',
                     justifyContent: 'center',
-                    alignItems: 'start'
+                    alignItems: 'start',
+                    backgroundAttachment: 'fixed'
                 }}
             >
                 <CssBaseline />
 
                 <Router>
                     <Routes>
-                        <Route path="/" element={<ResultPage />}></Route>
+                        <Route path="/" element={<FilmPage />}></Route>
 
                         <Route path="/xxxx/:xxxxx" element={<Accueil />}></Route>
                     </Routes>

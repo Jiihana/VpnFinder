@@ -3,15 +3,14 @@ import { Box, colors, Stack, Typography } from '@mui/material';
 const ResultFilmComponent = () => {
     return (
         <Stack
-            spacing={5}
+            spacing={1}
             direction="row"
             sx={{
-                height: '100%',
                 width: '100%',
                 backgroundColor: 'rgba(1, 1, 1, 0.5)',
                 border: '2px solid white',
                 borderRadius: '40px',
-                padding: '16px'
+                padding: '0.5%'
             }}
         >
             <Box
@@ -30,15 +29,15 @@ const ResultFilmComponent = () => {
                 sx={{
                     height: '100%',
                     width: '80%',
-                    paddingBottom: '5%',
+                    paddingBottom: '3%',
                     paddingTop: '1%'
                 }}
             >
                 <Stack>
-                    <Typography variant="h2">Avengers</Typography>
-                    <Typography variant="h5">12/01/2024</Typography>
+                    <Typography variant="h3">Avengers</Typography>
+                    <Typography variant="h6">12/01/2024</Typography>
                 </Stack>
-                <Typography variant="h5">
+                <Typography variant="h6">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
                     ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </Typography>
