@@ -1,13 +1,13 @@
 import http from 'http';
 import express from 'express';
-import { serverApiMotRigolo } from './motrigolo/vpnFinderApi';
+import { vpnFinderServerApi } from './vpnFinder/vpnFinderApi';
 
 const application = express();
 
 /** Server Handling */
 const httpServer = http.createServer(application);
 
-serverApiMotRigolo.registerEndpoint(application);
+vpnFinderServerApi.registerEndpoint(application);
 
 /** Log the request */
 application.use((req, res, next) => {
