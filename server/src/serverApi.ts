@@ -1,13 +1,22 @@
 import http from 'http';
 import express from 'express';
-import { vpnFinderServerApi } from './vpnFinder/vpnFinderApi';
+import { VpnFinderApi } from './vpnFinder/vpnFinderApi';
+import cors from 'cors';
 
 const application = express();
 
 /** Server Handling */
 const httpServer = http.createServer(application);
 
-vpnFinderServerApi.registerEndpoint(application);
+application.use(
+    cors({
+        origin: 'http://localhost:3000',
+        credentials: true //access-control-allow-credentials:true
+    })
+);
+
+application.use(express.json());
+application.use(express.urlencoded({ extended: true }));
 
 /** Log the request */
 application.use((req, res, next) => {
@@ -20,27 +29,12 @@ application.use((req, res, next) => {
     next();
 });
 
-/** Parse the body of the request */
-application.use(express.urlencoded({ extended: true }));
-application.use(express.json());
-
-/** Rules of our API */
-application.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, gameId, playerId');
-
-    if (req.method == 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-    }
-
-    next();
-});
-
 /** Healthcheck */
 application.get('/ping', (req, res, next) => {
     return res.status(200).json({ hello: 'world!' });
 });
+
+VpnFinderApi.registerEndpoint(application);
 
 /** Error handling */
 application.use((req, res, next) => {

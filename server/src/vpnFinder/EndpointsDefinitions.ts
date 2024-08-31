@@ -1,40 +1,46 @@
 import { FilmResultModel } from '../../../client/src/Shared/FilmResultModel';
 import { ResultatValue } from './ErrorModel';
+import http from 'http';
+import fetch from 'node-fetch';
 
 export class EndpointsDefinitions {
-    const fetch = require('node-fetch');
+    httpServer: http.Server;
+    static apiKey =
+        'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Y2JkZGRlMzUxYzZhN2E3ZWJhNDMyM2JmMGQ1NmY3NCIsInN1YiI6IjY1OGVmZDNkMGU1YWJhNzJiNjg2MmQ2MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lb0IWJdaPh16_cmIxEkUKT-gHVI_egK9wIV9G8R3wWg';
+    static baseUrl = 'https://api.themoviedb.org/3/';
 
-    public async GetFilmsResults(title:string): Promise<ResultatValue<FilmResultModel>> {
-        const allMoviesFromKeyword = await _httpClient.GetFromJsonAsync<MovieDatabaseRequestResponseList<Movie>>($"3/search/movie?query={title}");
-        const allSeriesFromKeyword = await _httpClient.GetFromJsonAsync<MovieDatabaseRequestResponseList<Tv>>($"3/search/tv?query={title}");
+    constructor(httpServer: http.Server) {
+        this.httpServer = httpServer;
+    }
 
+    public static async GetFilmsResults(title: string): Promise<ResultatValue<FilmResultModel[]>> {
         try {
-            const response = await fetch(`https://trouve-mot.fr/api/sizemax/9/`);
+            const response = await fetch(this.baseUrl + `search/movie?query=${title}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${this.apiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
 
             if (!response.ok) {
                 return {
                     success: false,
-                    message: `Un problème est survenu lors de l'appel à https://trouve-mot.fr/api/ pour modifier 1 mot`
+                    message: `Un problème est survenu lors de l'appel à GetfilmResults pour les films`
                 };
             }
 
-            const result = (await response.json()) as wordApiDto[];
-
-            this.ChosenWords.forEach((chosenWord, index) => {
-                if (chosenWord == word) {
-                    this.ChosenWords[index] = result[0].name.charAt(0).toUpperCase() + result[0].name.slice(1);
-                }
-            });
+            const result = (await response.json()) as FilmResultModel[];
 
             return {
-                value: result[0].name.charAt(0).toUpperCase() + result[0].name.slice(1),
+                value: result,
                 success: true
             };
         } catch (e) {
             console.log(e);
             return {
                 success: false,
-                message: `Un problème est survenu lors de l'appel à https://trouve-mot.fr/api/ pour modifier 1 mot`
+                message: `Un problème est survenu lors de l'appel à GetfilmResults pour les films, dans le catch`
             };
         }
     }

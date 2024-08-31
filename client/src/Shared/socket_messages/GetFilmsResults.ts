@@ -1,3 +1,5 @@
+import { FilmResultModel } from '../FilmResultModel';
+
 export class GetFilmsResultsRequest {
     static Message = 'GetFilmsResultsRequest';
 
@@ -11,9 +13,9 @@ export class GetFilmsResultsRequest {
 export class GetFilmsResultsResponse {
     static Message = 'GetFilmsResultsResponse';
 
-    public films: FilmResultType[];
+    public films: FilmResultModel[];
 
-    constructor(films: FilmResultType[]) {
+    constructor(films: FilmResultModel[]) {
         this.films = films;
     }
 }

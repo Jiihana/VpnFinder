@@ -1,16 +1,41 @@
 import { Box, colors, Stack, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FilmResultModel } from '../../Shared/FilmResultModel';
 
-const ResultFilmComponent = () => {
+interface ResultFilmComponentProps {
+    film: FilmResultModel;
+}
+
+const ResultFilmComponent = (props: ResultFilmComponentProps) => {
     const navigate = useNavigate();
 
-    const [filmName, setFilmName] = useState('Avengers');
+    const [name, setName] = useState('');
+    const [overview, setOverview] = useState('');
+    const [date, setDate] = useState('');
+    const [posterPath, setPosterPath] = useState('');
 
     const navigateToFilmPage = () => {
         console.log('navigate to film');
-        navigate(`/film/${filmName}`);
+        navigate(`/film/${name}`);
     };
+
+    useEffect(() => {
+        setName(props.film.Title);
+    }, [props.film.Title]);
+
+    useEffect(() => {
+        setOverview(props.film.Overview);
+    }, [props.film.Overview]);
+
+    useEffect(() => {
+        setDate(props.film.ReleaseDate);
+    }, [props.film.ReleaseDate]);
+
+    useEffect(() => {
+        setPosterPath(props.film.PosterPath);
+    }, [props.film.PosterPath]);
+
     return (
         <Stack
             spacing={1}
@@ -27,8 +52,7 @@ const ResultFilmComponent = () => {
         >
             <Box
                 sx={{
-                    backgroundImage:
-                        'url(https://www.komar.de/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-4127_avengers_endgame_movie_poster_web.jpg)',
+                    backgroundImage: `url(${{ posterPath }})`,
                     backgroundSize: 'contain',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -46,13 +70,10 @@ const ResultFilmComponent = () => {
                 }}
             >
                 <Stack>
-                    <Typography variant="h3">{filmName}</Typography>
-                    <Typography variant="h6">12/01/2024</Typography>
+                    <Typography variant="h3">{name}</Typography>
+                    <Typography variant="h6">{date}</Typography>
                 </Stack>
-                <Typography variant="h6">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </Typography>
+                <Typography variant="h6">{overview}</Typography>
             </Stack>
         </Stack>
     );

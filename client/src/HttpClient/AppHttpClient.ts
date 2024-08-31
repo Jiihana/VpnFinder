@@ -1,18 +1,16 @@
-export class AppHttpClient {
-    constructor() {}
-}
+import { GetFilmsResultsRequest, GetFilmsResultsResponse } from '../Shared/socket_messages/GetFilmsResults';
 
-export class MotRigoloClient {
+export class AppHttpClient {
     private static baseUrl = 'http://localhost:32769';
 
-    static async Call(url: string, headers: Record<string, string> = {}): Promise<HttpResult> {
+    static GetFilms = async (title: string): Promise<HttpResultValue<GetFilmsResultsResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetFilmsResultsResponse>(`${GetFilmsResultsRequest.Message}?title=${title}`);
+    };
+
+    static async Call(url: string): Promise<HttpResult> {
         try {
-            var response = await fetch(`${MotRigoloClient.baseUrl}/${url}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...headers
-                }
+            var response = await fetch(`${AppHttpClient.baseUrl}/${url}`, {
+                method: 'GET'
             });
 
             if (response.ok) {
@@ -34,13 +32,11 @@ export class MotRigoloClient {
         }
     }
 
-    static async CallWithResponseValue<T>(url: string, headers: Record<string, string> = {}): Promise<HttpResultValue<T>> {
+    static async CallWithResponseValue<T>(url: string): Promise<HttpResultValue<T>> {
         try {
-            var response = await fetch(`${MotRigoloClient.baseUrl}/${url}`, {
-                method: 'GET',
-                headers: {
-                    ...headers
-                }
+            console.log(`${AppHttpClient.baseUrl}/${url}`);
+            var response = await fetch(`${AppHttpClient.baseUrl}/${url}`, {
+                method: 'GET'
             });
 
             if (!response.ok) {

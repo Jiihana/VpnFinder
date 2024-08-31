@@ -13,7 +13,7 @@ const FilmSearchButton = () => {
     };
 
     const navigateToResults = async () => {
-        navigate(`/result/${inputValue}`);
+        navigate(`/results/${inputValue}`);
     };
 
     return (
@@ -36,9 +36,6 @@ const FilmSearchButton = () => {
                 inputProps={{ style: { fontSize: 25, textAlign: 'start' } }}
                 InputLabelProps={{ style: { fontSize: 25 } }}
                 sx={{ input: { color: 'white' }, width: '80%', height: 'auto' }}
-                InputProps={{
-                    disableUnderline: true
-                }}
             />
             <Button
                 color="primary"

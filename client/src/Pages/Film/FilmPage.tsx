@@ -1,10 +1,33 @@
 import { Box, colors, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
 import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FlagWithCountry from './FlagWithCountry';
+import { FilmResultModel } from '../../Shared/FilmResultModel';
+import { useParams } from 'react-router-dom';
+import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 
 const FilmPage = () => {
     const [platform, setPlatform] = React.useState('');
+    const { filmName } = useParams();
+
+    const [film, setFilm] = useState<FilmResultModel[]>([]);
+
+    useEffect(() => {
+        const fetchFilm = async () => {
+            // try {
+            //     // const result = await AppHttpClient.GetFilm(filmName as string);
+            //     if (!result.success) {
+            //         console.error('PROBLEME OILALALA');
+            //         return;
+            //     }
+            //     setFilm(result.value.film);
+            // } catch (error) {
+            //     console.error('Une erreur est survenue lors de la récupération des films', error);
+            // }
+        };
+
+        fetchFilm();
+    }, [filmName]);
 
     const handleChange = (event: SelectChangeEvent) => {
         setPlatform(event.target.value as string);
@@ -50,7 +73,7 @@ const FilmPage = () => {
                     justifyContent: 'center'
                 }}
             >
-                <ResultFilmComponent />
+                {/* <ResultFilmComponent film={film} /> */}
             </Box>
 
             <Stack

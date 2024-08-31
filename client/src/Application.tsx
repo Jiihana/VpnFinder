@@ -2,7 +2,6 @@ import React from 'react';
 import { ThemeProvider, createTheme, CssBaseline, Box, colors } from '@mui/material';
 import { themeOptions } from './Theme/Theme';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Accueil from './Pages/Home/Home';
 import ResultPage from './Pages/ResultPage/ResultPage';
 import FilmPage from './Pages/Film/FilmPage';
 import Home from './Pages/Home/Home';
@@ -34,8 +33,8 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
                     <Routes>
                         <Route path="/" element={<Home />}></Route>
 
-                        <Route path="/result/:search" element={<ResultPage />}></Route>
-                        <Route path="/film/:filmName" element={<FilmPage />}></Route>
+                        <Route path="/results/:film" element={<ResultPage />}></Route>
+                        <Route path="/film/:film" element={<FilmPage />}></Route>
                     </Routes>
                 </Router>
             </Box>
