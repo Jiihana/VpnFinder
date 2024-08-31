@@ -1,10 +1,10 @@
 import { Box, Stack, Typography } from '@mui/material';
 import FilmSearchButton from '../Home/FilmSearchButton';
-import ResultFilmComponent from './ResultFilmComponent';
 import { useParams } from 'react-router-dom';
 import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 import { FilmResultModel } from '../../Shared/FilmResultModel';
 import { useEffect, useState } from 'react';
+import ResultFilmComponent from './ResultFilmComponent';
 
 const ResultPage = () => {
     const { film } = useParams();
@@ -15,10 +15,12 @@ const ResultPage = () => {
         const fetchFilms = async () => {
             try {
                 const result = await AppHttpClient.GetFilms(film as string);
+
                 if (!result.success) {
                     console.error('PROBLEME OILALALA');
                     return;
                 }
+
                 setFilms(result.value.films);
             } catch (error) {
                 console.error('Une erreur est survenue lors de la récupération des films', error);
@@ -27,6 +29,10 @@ const ResultPage = () => {
 
         fetchFilms();
     }, [film]);
+
+    if (films.length == 0) {
+        return <Typography variant="h1">Searching for {film}</Typography>;
+    }
 
     return (
         <Stack

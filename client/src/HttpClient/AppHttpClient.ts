@@ -1,3 +1,4 @@
+import { GetFilmResultRequest, GetFilmResultResponse } from '../Shared/socket_messages/GetFilmResult';
 import { GetFilmsResultsRequest, GetFilmsResultsResponse } from '../Shared/socket_messages/GetFilmsResults';
 
 export class AppHttpClient {
@@ -5,6 +6,10 @@ export class AppHttpClient {
 
     static GetFilms = async (title: string): Promise<HttpResultValue<GetFilmsResultsResponse>> => {
         return AppHttpClient.CallWithResponseValue<GetFilmsResultsResponse>(`${GetFilmsResultsRequest.Message}?title=${title}`);
+    };
+
+    static GetFilm = async (filmId: number): Promise<HttpResultValue<GetFilmResultResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetFilmResultResponse>(`${GetFilmResultRequest.Message}?filmId=${filmId}`);
     };
 
     static async Call(url: string): Promise<HttpResult> {

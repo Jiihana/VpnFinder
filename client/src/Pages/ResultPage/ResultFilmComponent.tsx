@@ -1,5 +1,4 @@
 import { Box, colors, Stack, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FilmResultModel } from '../../Shared/FilmResultModel';
 
@@ -10,31 +9,10 @@ interface ResultFilmComponentProps {
 const ResultFilmComponent = (props: ResultFilmComponentProps) => {
     const navigate = useNavigate();
 
-    const [name, setName] = useState('');
-    const [overview, setOverview] = useState('');
-    const [date, setDate] = useState('');
-    const [posterPath, setPosterPath] = useState('');
-
     const navigateToFilmPage = () => {
         console.log('navigate to film');
-        navigate(`/film/${name}`);
+        navigate(`/film/${props.film.id}`);
     };
-
-    useEffect(() => {
-        setName(props.film.Title);
-    }, [props.film.Title]);
-
-    useEffect(() => {
-        setOverview(props.film.Overview);
-    }, [props.film.Overview]);
-
-    useEffect(() => {
-        setDate(props.film.ReleaseDate);
-    }, [props.film.ReleaseDate]);
-
-    useEffect(() => {
-        setPosterPath(props.film.PosterPath);
-    }, [props.film.PosterPath]);
 
     return (
         <Stack
@@ -52,7 +30,7 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
         >
             <Box
                 sx={{
-                    backgroundImage: `url(${{ posterPath }})`,
+                    backgroundImage: `url('https://image.tmdb.org/t/p/original${props.film.poster_path}')`,
                     backgroundSize: 'contain',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -70,10 +48,10 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
                 }}
             >
                 <Stack>
-                    <Typography variant="h3">{name}</Typography>
-                    <Typography variant="h6">{date}</Typography>
+                    <Typography variant="h3">{props.film.title}</Typography>
+                    <Typography variant="h6">{props.film.release_date}</Typography>
                 </Stack>
-                <Typography variant="h6">{overview}</Typography>
+                <Typography variant="h6">{props.film.overview}</Typography>
             </Stack>
         </Stack>
     );

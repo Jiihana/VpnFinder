@@ -1,4 +1,5 @@
-import { FilmResultModel } from '../../../client/src/Shared/FilmResultModel';
+import { GetFilmsResultsResponse } from '../../../client/src/Shared/Socket_messages/GetFilmsResults';
+import { GetFilmResultResponse } from '../../../client/src/Shared/Socket_messages/GetFilmResult';
 import { ResultatValue } from './ErrorModel';
 import http from 'http';
 import fetch from 'node-fetch';
@@ -13,7 +14,7 @@ export class EndpointsDefinitions {
         this.httpServer = httpServer;
     }
 
-    public static async GetFilmsResults(title: string): Promise<ResultatValue<FilmResultModel[]>> {
+    public static async GetFilmsResults(title: string): Promise<ResultatValue<GetFilmsResultsResponse>> {
         try {
             const response = await fetch(this.baseUrl + `search/movie?query=${title}`, {
                 method: 'GET',
@@ -30,10 +31,10 @@ export class EndpointsDefinitions {
                 };
             }
 
-            const result = (await response.json()) as FilmResultModel[];
+            const result = await response.json();
 
             return {
-                value: result,
+                value: new GetFilmsResultsResponse(result.results),
                 success: true
             };
         } catch (e) {
@@ -41,6 +42,38 @@ export class EndpointsDefinitions {
             return {
                 success: false,
                 message: `Un problème est survenu lors de l'appel à GetfilmResults pour les films, dans le catch`
+            };
+        }
+    }
+
+    public static async GetFilmResult(filmId: number): Promise<ResultatValue<GetFilmResultResponse>> {
+        try {
+            const response = await fetch(this.baseUrl + `movie/${filmId}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${this.apiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                return {
+                    success: false,
+                    message: `Un problème est survenu lors de l'appel à GetfilmResult pour les films`
+                };
+            }
+
+            const result = await response.json();
+
+            return {
+                value: new GetFilmResultResponse(result),
+                success: true
+            };
+        } catch (e) {
+            console.log(e);
+            return {
+                success: false,
+                message: `Un problème est survenu lors de l'appel à GetfilmResult pour les films, dans le catch`
             };
         }
     }

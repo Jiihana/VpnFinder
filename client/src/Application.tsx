@@ -34,7 +34,7 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
                         <Route path="/" element={<Home />}></Route>
 
                         <Route path="/results/:film" element={<ResultPage />}></Route>
-                        <Route path="/film/:film" element={<FilmPage />}></Route>
+                        <Route path="/film/:filmId" element={<FilmPage />}></Route>
                     </Routes>
                 </Router>
             </Box>

@@ -1,8 +1,8 @@
 export type FilmResultModel = {
-    Title: string;
-    ReleaseDate: string;
-    Overview: string;
-    PosterPath: string;
-    IsSerie: boolean;
-    Adult: boolean;
+    title: string;
+    release_date: string;
+    overview: string;
+    poster_path: string;
+    adult: boolean;
+    id: number;
 };
