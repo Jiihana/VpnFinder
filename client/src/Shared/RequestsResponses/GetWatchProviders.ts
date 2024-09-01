@@ -1,4 +1,4 @@
-import { WatchProviderModel } from '../WatchProvidersModel';
+import { WatchProviderModel } from './WatchProvidersModel';
 
 export class GetWatchProvidersRequest {
     static Message = 'GetWatchProvidersRequest';

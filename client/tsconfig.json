@@ -16,5 +16,5 @@
         "noEmit": true,
         "jsx": "react-jsx"
     },
-    "include": ["src", "../common/src"]
+    "include": ["src", "../common/src", "src/contexts/CountriesByCode.ts"]
 }

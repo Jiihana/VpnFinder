@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from '@mui/material';
 import FilmSearchButton from '../Home/FilmSearchButton';
 import { useParams } from 'react-router-dom';
 import { AppHttpClient } from '../../HttpClient/AppHttpClient';
-import { FilmResultModel } from '../../Shared/FilmResultModel';
+import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel';
 import { useEffect, useState } from 'react';
 import ResultFilmComponent from './ResultFilmComponent';
 

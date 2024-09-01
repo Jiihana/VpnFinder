@@ -1,6 +1,6 @@
 import { Box, colors, Stack, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { FilmResultModel } from '../../Shared/FilmResultModel';
+import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel';
 
 interface ResultFilmComponentProps {
     film: FilmResultModel;

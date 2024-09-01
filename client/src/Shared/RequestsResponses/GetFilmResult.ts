@@ -1,4 +1,4 @@
-import { FilmResultModel } from '../FilmResultModel';
+import { FilmResultModel } from './FilmResultModel';
 
 export class GetFilmResultRequest {
     static Message = 'GetFilmResultRequest';

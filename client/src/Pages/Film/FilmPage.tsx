@@ -1,11 +1,12 @@
 import { Box, colors, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import FlagWithCountry from './FlagWithCountry';
-import { FilmResultModel } from '../../Shared/FilmResultModel';
+import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel';
 import { useParams } from 'react-router-dom';
 import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
-import { WatchProviderModel } from '../../Shared/WatchProvidersModel';
+import { WatchProviderModel } from '../../Shared/RequestsResponses/WatchProvidersModel';
+import CountriesByCode from '../../Shared/Misc/CountriesByCode';
 
 const FilmPage = () => {
     const [watchProviders, setWatchProviders] = useState<{ [countryCode: string]: WatchProviderModel }>();
@@ -127,7 +128,7 @@ const FilmPage = () => {
                                 flagPath={
                                     'https://lesplusbeauxdrapeauxdumonde.com/wp-content/uploads/2017/03/netherlands-26885_1280.png?w=601&h=402)'
                                 }
-                                countryName={countryCode}
+                                countryName={CountriesByCode.GetCountryByCode(countryCode)}
                             />
                         </Grid>
                     );

@@ -1,6 +1,6 @@
-import { GetFilmResultRequest, GetFilmResultResponse } from '../Shared/socket_messages/GetFilmResult';
-import { GetFilmsResultsRequest, GetFilmsResultsResponse } from '../Shared/socket_messages/GetFilmsResults';
-import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/socket_messages/GetWatchProviders';
+import { GetFilmResultRequest, GetFilmResultResponse } from '../Shared/RequestsResponses/GetFilmResult';
+import { GetFilmsResultsRequest, GetFilmsResultsResponse } from '../Shared/RequestsResponses/GetFilmsResults';
+import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/RequestsResponses/GetWatchProviders';
 
 export class AppHttpClient {
     private static baseUrl = 'http://localhost:32769';
