@@ -118,16 +118,13 @@ const FilmPage = () => {
                         <Grid
                             item
                             key={countryCode}
-                            xs={2}
+                            xs={3}
                             sx={{
-                                alignItems: 'flex-end',
                                 display: 'flex'
                             }}
                         >
                             <FlagWithCountry
-                                flagPath={
-                                    'https://lesplusbeauxdrapeauxdumonde.com/wp-content/uploads/2017/03/netherlands-26885_1280.png?w=601&h=402)'
-                                }
+                                flagPath={`https://flagsapi.com/${countryCode}/flat/64.png`}
                                 countryName={CountriesByCode.GetCountryByCode(countryCode)}
                             />
                         </Grid>
@@ -219,9 +216,6 @@ const FilmPage = () => {
                     <Grid
                         container
                         sx={{
-                            alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            display: 'flex',
                             width: '100%',
                             height: 'auto'
                         }}

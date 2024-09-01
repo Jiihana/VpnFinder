@@ -15,7 +15,7 @@ const FlagWithCountry = (props: FlagWithCountryProps) => {
                 height: 'auto',
                 width: '100%',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
                 display: 'flex',
                 backgroundColor: 'rgba(1, 1, 1, 0.5)',
                 marginRight: '10%',
@@ -30,7 +30,7 @@ const FlagWithCountry = (props: FlagWithCountryProps) => {
                     backgroundRepeat: 'no-repeat',
                     width: '30%',
                     height: '100%',
-                    paddingTop: '30%'
+                    paddingTop: '20%'
                 }}
             />
             <Typography variant="h5">{props.countryName}</Typography>
