@@ -1,7 +1,12 @@
 import { Box, colors, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
 import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
 
-const FlagWithCountry = () => {
+interface FlagWithCountryProps {
+    flagPath: string;
+    countryName: string;
+}
+
+const FlagWithCountry = (props: FlagWithCountryProps) => {
     return (
         <Stack
             direction="row"
@@ -19,7 +24,7 @@ const FlagWithCountry = () => {
         >
             <Box
                 sx={{
-                    backgroundImage: 'url(https://lesplusbeauxdrapeauxdumonde.com/wp-content/uploads/2017/03/netherlands-26885_1280.png?w=601&h=402)',
+                    backgroundImage: `url(${props.flagPath})`,
                     backgroundSize: 'contain',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -28,7 +33,7 @@ const FlagWithCountry = () => {
                     paddingTop: '30%'
                 }}
             />
-            <Typography variant="h5">Netherlands</Typography>
+            <Typography variant="h5">{props.countryName}</Typography>
         </Stack>
     );
 };

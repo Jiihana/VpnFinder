@@ -5,12 +5,13 @@ import { FilmResultModel } from '../../Shared/FilmResultModel';
 import { useParams } from 'react-router-dom';
 import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
-import { WatchProviderModel, FlatRate } from '../../Shared/WatchProvidersModel';
+import { WatchProviderModel } from '../../Shared/WatchProvidersModel';
 
 const FilmPage = () => {
     const [watchProviders, setWatchProviders] = useState<{ [countryCode: string]: WatchProviderModel }>();
-    const [selectedWatchProvider, setSelectedWatchProvider] = useState('');
     const [watchProviderNames, setWatchProviderNames] = useState<string[]>([]);
+    const [selectedWatchProvider, setSelectedWatchProvider] = useState('');
+    const [availableCountries, setAvailableCountries] = useState<React.ReactNode[]>([]);
     const { filmId } = useParams();
 
     const [film, setFilm] = useState<FilmResultModel>();
@@ -51,6 +52,7 @@ const FilmPage = () => {
 
     const handleChange = (event: SelectChangeEvent) => {
         setSelectedWatchProvider(event.target.value as string);
+        console.log(event.target.value as string);
     };
 
     useEffect(() => {
@@ -76,7 +78,6 @@ const FilmPage = () => {
 
                 providerModel.flatrate.forEach((flatrate) => {
                     if (!providersNames.includes(flatrate.provider_name)) {
-                        console.log(`adding ${flatrate.provider_name}`);
                         providersNames.push(flatrate.provider_name);
                     }
                 });
@@ -90,22 +91,52 @@ const FilmPage = () => {
 
     const numberOfCountries = 20;
 
-    const items = [];
-    for (let index = 0; index < numberOfCountries; index++) {
-        items.push(
-            <Grid
-                item
-                xs={2}
-                key={index}
-                sx={{
-                    alignItems: 'flex-end',
-                    display: 'flex'
-                }}
-            >
-                <FlagWithCountry />
-            </Grid>
-        );
-    }
+    useEffect(() => {
+        const flagWithCountryComponents: React.ReactNode[] = [];
+
+        if (watchProviders == undefined) {
+            return;
+        }
+
+        if (Object.keys(watchProviders).length === 0) {
+            return;
+        }
+
+        Object.entries(watchProviders).forEach(([countryCode, providerModel]) => {
+            if (providerModel.flatrate == undefined) {
+                return;
+            }
+
+            if (providerModel.flatrate.length == 0) {
+                return;
+            }
+
+            providerModel.flatrate.forEach((flatrate) => {
+                if (flatrate.provider_name == selectedWatchProvider) {
+                    flagWithCountryComponents.push(
+                        <Grid
+                            item
+                            key={countryCode}
+                            xs={2}
+                            sx={{
+                                alignItems: 'flex-end',
+                                display: 'flex'
+                            }}
+                        >
+                            <FlagWithCountry
+                                flagPath={
+                                    'https://lesplusbeauxdrapeauxdumonde.com/wp-content/uploads/2017/03/netherlands-26885_1280.png?w=601&h=402)'
+                                }
+                                countryName={countryCode}
+                            />
+                        </Grid>
+                    );
+                }
+            });
+        });
+
+        setAvailableCountries(flagWithCountryComponents);
+    }, [selectedWatchProvider]);
 
     if (film == undefined || watchProviders == undefined) {
         return <Typography variant="h1">Loading infos</Typography>;
@@ -171,7 +202,9 @@ const FilmPage = () => {
                             >
                                 <Select value={selectedWatchProvider} onChange={handleChange}>
                                     {watchProviderNames.map((watchProviderName, index) => (
-                                        <MenuItem value={index}>{watchProviderName}</MenuItem>
+                                        <MenuItem key={index} value={watchProviderName}>
+                                            {watchProviderName}
+                                        </MenuItem>
                                     ))}
                                 </Select>
                             </FormControl>
@@ -181,18 +214,22 @@ const FilmPage = () => {
                     )}
                 </Stack>
 
-                <Grid
-                    container
-                    sx={{
-                        alignItems: 'center',
-                        justifyContent: 'flex-start',
-                        display: 'flex',
-                        width: '100%',
-                        height: 'auto'
-                    }}
-                >
-                    {items}
-                </Grid>
+                {availableCountries.length != 0 ? (
+                    <Grid
+                        container
+                        sx={{
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            display: 'flex',
+                            width: '100%',
+                            height: 'auto'
+                        }}
+                    >
+                        {availableCountries}
+                    </Grid>
+                ) : (
+                    <></>
+                )}
             </Stack>
         </Stack>
     );
