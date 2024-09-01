@@ -66,6 +66,14 @@ const FilmPage = () => {
             }
 
             Object.entries(watchProviders).forEach(([countryCode, providerModel]) => {
+                if (providerModel.flatrate == undefined) {
+                    return;
+                }
+
+                if (providerModel.flatrate.length == 0) {
+                    return;
+                }
+
                 providerModel.flatrate.forEach((flatrate) => {
                     if (!providersNames.includes(flatrate.provider_name)) {
                         console.log(`adding ${flatrate.provider_name}`);
@@ -151,18 +159,26 @@ const FilmPage = () => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Typography variant="h6">It's available to watch with a subscription on these streaming plateforms/countries :)</Typography>
-                    <FormControl
-                        sx={{
-                            width: '20%'
-                        }}
-                    >
-                        <Select value={selectedWatchProvider} onChange={handleChange}>
-                            {watchProviderNames.map((watchProviderName, index) => (
-                                <MenuItem value={index}>{watchProviderName}</MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
+                    {watchProviderNames.length != 0 ? (
+                        <>
+                            <Typography variant="h6">
+                                It's available to watch with a subscription on these streaming plateforms/countries :)
+                            </Typography>
+                            <FormControl
+                                sx={{
+                                    width: '20%'
+                                }}
+                            >
+                                <Select value={selectedWatchProvider} onChange={handleChange}>
+                                    {watchProviderNames.map((watchProviderName, index) => (
+                                        <MenuItem value={index}>{watchProviderName}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </>
+                    ) : (
+                        <Typography variant="h6">Your film isn't on any streaming platform :(</Typography>
+                    )}
                 </Stack>
 
                 <Grid
