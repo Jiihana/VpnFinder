@@ -1,5 +1,6 @@
 import { GetFilmResultRequest, GetFilmResultResponse } from '../Shared/socket_messages/GetFilmResult';
 import { GetFilmsResultsRequest, GetFilmsResultsResponse } from '../Shared/socket_messages/GetFilmsResults';
+import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/socket_messages/GetWatchProviders';
 
 export class AppHttpClient {
     private static baseUrl = 'http://localhost:32769';
@@ -10,6 +11,10 @@ export class AppHttpClient {
 
     static GetFilm = async (filmId: number): Promise<HttpResultValue<GetFilmResultResponse>> => {
         return AppHttpClient.CallWithResponseValue<GetFilmResultResponse>(`${GetFilmResultRequest.Message}?filmId=${filmId}`);
+    };
+
+    static GetWatchProviders = async (filmId: number): Promise<HttpResultValue<GetWatchProvidersResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetWatchProvidersResponse>(`${GetWatchProvidersRequest.Message}?filmId=${filmId}`);
     };
 
     static async Call(url: string): Promise<HttpResult> {

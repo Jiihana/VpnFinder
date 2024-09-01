@@ -3,6 +3,7 @@ import { GetFilmResultResponse } from '../../../client/src/Shared/Socket_message
 import { ResultatValue } from './ErrorModel';
 import http from 'http';
 import fetch from 'node-fetch';
+import { GetWatchProvidersResponse } from '../../../client/src/Shared/socket_messages/GetWatchProviders';
 
 export class EndpointsDefinitions {
     httpServer: http.Server;
@@ -67,6 +68,38 @@ export class EndpointsDefinitions {
 
             return {
                 value: new GetFilmResultResponse(result),
+                success: true
+            };
+        } catch (e) {
+            console.log(e);
+            return {
+                success: false,
+                message: `Un problème est survenu lors de l'appel à GetfilmResult pour les films, dans le catch`
+            };
+        }
+    }
+
+    public static async GetWatchProviders(filmId: number): Promise<ResultatValue<GetWatchProvidersResponse>> {
+        try {
+            const response = await fetch(this.baseUrl + `movie/${filmId}/watch/providers`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${this.apiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                return {
+                    success: false,
+                    message: `Un problème est survenu lors de l'appel à GetfilmResult pour les films`
+                };
+            }
+
+            const result = await response.json();
+
+            return {
+                value: new GetWatchProvidersResponse(result.results),
                 success: true
             };
         } catch (e) {

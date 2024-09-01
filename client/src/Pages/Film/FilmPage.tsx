@@ -5,9 +5,12 @@ import { FilmResultModel } from '../../Shared/FilmResultModel';
 import { useParams } from 'react-router-dom';
 import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
+import { WatchProviderModel, FlatRate } from '../../Shared/WatchProvidersModel';
 
 const FilmPage = () => {
-    const [platform, setPlatform] = React.useState('');
+    const [watchProviders, setWatchProviders] = useState<{ [countryCode: string]: WatchProviderModel }>();
+    const [selectedWatchProvider, setSelectedWatchProvider] = useState('');
+    const [watchProviderNames, setWatchProviderNames] = useState<string[]>([]);
     const { filmId } = useParams();
 
     const [film, setFilm] = useState<FilmResultModel>();
@@ -18,7 +21,7 @@ const FilmPage = () => {
                 const result = await AppHttpClient.GetFilm(+filmId!);
 
                 if (!result.success) {
-                    console.error('PROBLEME OILALALA');
+                    console.error('Result != succes, fetch films');
                     return;
                 }
                 setFilm(result.value.film);
@@ -27,12 +30,55 @@ const FilmPage = () => {
             }
         };
 
+        const fetchWatchProviders = async () => {
+            try {
+                const result = await AppHttpClient.GetWatchProviders(+filmId!);
+
+                if (!result.success) {
+                    console.error('Result != succes, fetch watch providers');
+                    return;
+                }
+
+                setWatchProviders(result.value.providers);
+            } catch (error) {
+                console.error('Une erreur est survenue lors de la récupération du film', error);
+            }
+        };
+
         fetchFilm();
+        fetchWatchProviders();
     }, [filmId]);
 
     const handleChange = (event: SelectChangeEvent) => {
-        setPlatform(event.target.value as string);
+        setSelectedWatchProvider(event.target.value as string);
     };
+
+    useEffect(() => {
+        const getWatchProvidersNames = (): string[] => {
+            let providersNames: string[] = [];
+
+            if (watchProviders == undefined) {
+                return providersNames;
+            }
+
+            if (Object.keys(watchProviders).length === 0) {
+                return providersNames;
+            }
+
+            Object.entries(watchProviders).forEach(([countryCode, providerModel]) => {
+                providerModel.flatrate.forEach((flatrate) => {
+                    if (!providersNames.includes(flatrate.provider_name)) {
+                        console.log(`adding ${flatrate.provider_name}`);
+                        providersNames.push(flatrate.provider_name);
+                    }
+                });
+            });
+
+            return providersNames;
+        };
+
+        setWatchProviderNames(getWatchProvidersNames());
+    }, [watchProviders]);
 
     const numberOfCountries = 20;
 
@@ -53,7 +99,7 @@ const FilmPage = () => {
         );
     }
 
-    if (film == undefined) {
+    if (film == undefined || watchProviders == undefined) {
         return <Typography variant="h1">Loading infos</Typography>;
     }
 
@@ -111,10 +157,10 @@ const FilmPage = () => {
                             width: '20%'
                         }}
                     >
-                        <Select labelId="demo-simple-select-label" id="demo-simple-select" value={platform} onChange={handleChange}>
-                            <MenuItem value={10}>Netflix</MenuItem>
-                            <MenuItem value={20}>Paramount</MenuItem>
-                            <MenuItem value={30}>Disney+</MenuItem>
+                        <Select value={selectedWatchProvider} onChange={handleChange}>
+                            {watchProviderNames.map((watchProviderName, index) => (
+                                <MenuItem value={index}>{watchProviderName}</MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
                 </Stack>
