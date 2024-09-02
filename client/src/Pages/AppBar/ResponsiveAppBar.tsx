@@ -1,35 +1,29 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import AdbIcon from '@mui/icons-material/Adb';
-import { colors } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import PublicIcon from '@mui/icons-material/Public';
 
 const pages = ['Search', 'About', 'Credits'];
 
 function ResponsiveAppBar() {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const navigate = useNavigate();
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
+    const handleNav = (page: string) => {
+        if (page == pages[0]) {
+            navigate(`/`);
+            return;
+        }
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
+        navigate(`/${page.toLowerCase()}`);
     };
 
     return (
         <AppBar position="static">
-            <Toolbar disableGutters sx={{ paddingLeft: '2%' }}>
-                <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <Toolbar disableGutters sx={{ paddingLeft: '2%', backgroundColor: 'primary.dark' }}>
+                <PublicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                 <Typography
                     variant="h6"
                     sx={{
@@ -46,7 +40,7 @@ function ResponsiveAppBar() {
 
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                     {pages.map((page) => (
-                        <Button key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
+                        <Button key={page} onClick={handleNav.bind(null, page)} sx={{ my: 2, color: 'white', display: 'block' }}>
                             {page}
                         </Button>
                     ))}

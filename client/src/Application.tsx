@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ResultPage from './Pages/ResultPage/ResultPage';
 import FilmPage from './Pages/Film/FilmPage';
 import Home from './Pages/Home/Home';
-import ResponsiveAppBar from './Pages/Header/Header';
+import ResponsiveAppBar from './Pages/AppBar/ResponsiveAppBar';
+import About from './Pages/About/About';
 
 export interface IApplicationProps {}
 
@@ -17,30 +18,32 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
     return (
         <ThemeProvider theme={darkTheme}>
             <>
-                <ResponsiveAppBar></ResponsiveAppBar>
-                <Box
-                    display="flex"
-                    sx={{
-                        backgroundImage: 'url(/images/pages/home.png)',
-                        backgroundSize: 'auto',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundAttachment: 'fixed',
-                        minHeight: '100vh',
-                        width: '100vw'
-                    }}
-                >
-                    <CssBaseline />
+                <CssBaseline />
 
-                    <Router>
+                <Router>
+                    <ResponsiveAppBar />
+                    <Box
+                        display="flex"
+                        sx={{
+                            backgroundImage: 'url(/images/pages/home.png)',
+                            backgroundSize: 'auto',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundAttachment: 'fixed',
+                            minHeight: '100vh',
+                            width: '100vw'
+                        }}
+                    >
                         <Routes>
                             <Route path="/" element={<Home />}></Route>
 
                             <Route path="/results/:film" element={<ResultPage />}></Route>
                             <Route path="/film/:filmId" element={<FilmPage />}></Route>
+                            <Route path="/About" element={<About />}></Route>
+                            <Route path="/Credits" element={<Home />}></Route>
                         </Routes>
-                    </Router>
-                </Box>
+                    </Box>
+                </Router>
             </>
         </ThemeProvider>
     );

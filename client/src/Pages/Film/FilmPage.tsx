@@ -53,7 +53,6 @@ const FilmPage = () => {
 
     const handleChange = (event: SelectChangeEvent) => {
         setSelectedWatchProvider(event.target.value as string);
-        console.log(event.target.value as string);
     };
 
     useEffect(() => {

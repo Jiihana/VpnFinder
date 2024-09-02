@@ -4,14 +4,14 @@ export const themeOptions: ThemeOptions = {
     palette: {
         mode: 'dark',
         primary: {
-            light: '#BDEAAC',
-            main: '#B1EA90',
-            dark: '#528341'
+            light: '#009ca5',
+            main: '#428d87',
+            dark: '#121a2f'
         },
         secondary: {
-            light: '#f7ced4',
-            main: '#ecc7ce',
-            dark: '#ef6581'
+            light: '#93e286',
+            main: '#f71a64',
+            dark: '#415067'
         }
     }
     // typography: { fontFamily: ['TypeWrong', 'cursive'].join(',') }
