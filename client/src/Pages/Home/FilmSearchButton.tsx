@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from 'react';
-import { Box, Button, colors, IconButton, Stack, TextField } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { Button, Stack, TextField } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 const FilmSearchButton = () => {
@@ -12,9 +12,22 @@ const FilmSearchButton = () => {
         setInputValue(event.target.value);
     };
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter' && inputValue.trim()) {
+            navigateToResults();
+        }
+    };
     const navigateToResults = async () => {
         navigate(`/results/${inputValue}`);
     };
+
+    const { film } = useParams();
+
+    useEffect(() => {
+        if (film != undefined) {
+            setInputValue(film);
+        }
+    }, [film]);
 
     return (
         <Stack
@@ -30,6 +43,7 @@ const FilmSearchButton = () => {
             <TextField
                 value={inputValue}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 required
                 placeholder="Avengers ..."
                 variant="outlined"
@@ -47,6 +61,7 @@ const FilmSearchButton = () => {
                     alignItems: 'center'
                 }}
                 onClick={navigateToResults}
+                disabled={!inputValue.trim()}
             >
                 <SearchIcon sx={{ fontSize: '40px', color: 'white' }} />
             </Button>

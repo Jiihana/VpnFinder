@@ -3,8 +3,6 @@ import { Box, Typography, Button, Stack, useTheme, colors } from '@mui/material'
 import CreditComponent from './CreditComponent';
 
 export default function Credits() {
-    const theme = useTheme();
-
     return (
         <Stack
             spacing={5}
@@ -14,7 +12,8 @@ export default function Credits() {
                 alignItems: 'center',
                 justifyContent: 'flex-start',
                 display: 'flex',
-                marginTop: '5%'
+                marginTop: '5%',
+                marginBottom: '5%'
             }}
         >
             <Typography variant="h1">Thanks to:</Typography>

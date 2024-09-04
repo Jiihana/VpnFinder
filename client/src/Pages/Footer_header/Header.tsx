@@ -21,7 +21,7 @@ function Header() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Toolbar disableGutters sx={{ paddingLeft: '2%', backgroundColor: 'primary.dark' }}>
                 <PublicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                 <Typography

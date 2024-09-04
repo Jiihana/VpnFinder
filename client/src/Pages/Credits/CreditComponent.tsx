@@ -21,7 +21,7 @@ export default function CreditComponent(props: CreditComponentProps) {
                 backgroundColor: 'rgba(1, 1, 1, 0.5)',
                 border: '2px solid white',
                 borderRadius: '20px',
-                padding: '2%'
+                padding: '0.5%'
             }}
         >
             <Box
@@ -32,7 +32,7 @@ export default function CreditComponent(props: CreditComponentProps) {
                     backgroundRepeat: 'no-repeat',
                     width: '10%',
                     height: 'auto',
-                    paddingTop: '2%'
+                    paddingTop: '5%'
                 }}
             />
             <Stack

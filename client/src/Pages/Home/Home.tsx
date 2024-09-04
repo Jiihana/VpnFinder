@@ -16,7 +16,7 @@ const Accueil = () => {
             <Stack
                 spacing={20}
                 sx={{
-                    width: '50%',
+                    width: '100%',
                     height: 'auto',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -37,16 +37,29 @@ const Accueil = () => {
                     <Typography variant="h1">VPN Finder</Typography>
                     <Typography variant="h3">What do you want to watch today?</Typography>
                 </Stack>
-                <Box
+
+                <Stack
+                    spacing={20}
                     sx={{
-                        width: '100%',
+                        width: '50%',
                         height: 'auto',
-                        paddingLeft: '5%',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginRight: '5%',
                         display: 'flex'
                     }}
                 >
-                    <FilmSearchButton></FilmSearchButton>
-                </Box>
+                    <Box
+                        sx={{
+                            width: '100%',
+                            height: 'auto',
+                            paddingLeft: '5%',
+                            display: 'flex'
+                        }}
+                    >
+                        <FilmSearchButton />
+                    </Box>
+                </Stack>
             </Stack>
         </Box>
     );
