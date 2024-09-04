@@ -1,5 +1,5 @@
 import { GetFilmResultRequest, GetFilmResultResponse } from '../Shared/RequestsResponses/GetFilmResult';
-import { GetFilmsResultsRequest, GetFilmsResultsResponse } from '../Shared/RequestsResponses/GetFilmsResults';
+import { GetFilmsResultsResponse, GetFilmsResultsRequest } from '../Shared/RequestsResponses/GetFilmsResults';
 import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/RequestsResponses/GetWatchProviders';
 
 export class AppHttpClient {

@@ -5,6 +5,7 @@ import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel';
 import { useEffect, useState } from 'react';
 import ResultFilmComponent from './ResultFilmComponent';
+import Loader from '../Loaders/Loader';
 
 const ResultPage = () => {
     const { film } = useParams();
@@ -29,10 +30,6 @@ const ResultPage = () => {
 
         fetchFilms();
     }, [film]);
-
-    if (films.length == 0) {
-        return <Typography variant="h1">Searching for {film}</Typography>;
-    }
 
     return (
         <Stack
@@ -67,7 +64,7 @@ const ResultPage = () => {
                     }}
                 >
                     <Typography variant="h1">VPN Finder</Typography>
-                    <Typography variant="h3">Lorem ipsum pouet pouet</Typography>
+                    <Typography variant="h3">What do you want to watch today?</Typography>
                 </Stack>
 
                 <Box
@@ -92,9 +89,11 @@ const ResultPage = () => {
                     justifyContent: 'center'
                 }}
             >
-                {films.map((film, index) => (
-                    <ResultFilmComponent key={index} film={film} />
-                ))}
+                {films.length === 0 ? (
+                    <Loader message={'No film/serie found, try a different name'} />
+                ) : (
+                    films.map((film, index) => <ResultFilmComponent key={index} film={film} />)
+                )}
             </Stack>
         </Stack>
     );

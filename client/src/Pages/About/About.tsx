@@ -6,7 +6,7 @@ export default function About() {
 
     return (
         <Stack
-            spacing={20}
+            spacing={5}
             sx={{
                 width: '100%',
                 height: '100%',
@@ -33,27 +33,31 @@ export default function About() {
                 spacing={6}
             >
                 <Typography variant="h5">
-                    You are sitting on your sofa, and you want to watch [movie/serie]. You launch your favorite streaming platform, but{' '}
-                    <span style={{ color: theme.palette.secondary.light }}>it's not on the catalog!</span>
+                    You are sitting on your sofa, ready to watch a [movie/series]. You open your favorite streaming platform, but{' '}
+                    <span style={{ color: theme.palette.secondary.light }}> it's not in the catalog!</span>
                 </Typography>
                 <Typography variant="h5">
-                    You don't want to be a pirate, and you don't want to buy it. Maybe it's{' '}
-                    <span style={{ color: theme.palette.secondary.light }}>available in another country</span> on the same streaming platform?
+                    You don't want to resort to piracy, and you're not keen on buying it. Maybe it's{' '}
+                    <span style={{ color: theme.palette.secondary.light }}> available in another country</span> on the same streaming platform?
                 </Typography>
-                <Typography variant="h5">Find where you should put your VPN to have access to it!</Typography>
+                <Typography variant="h5">Find out where you should set your VPN to access it!</Typography>
             </Stack>
 
             <Stack
                 spacing={5}
                 sx={{
-                    width: '90%',
+                    width: '80%',
                     height: 'auto',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(1, 1, 1, 0.5)',
+                    border: '2px solid white',
+                    borderRadius: '20px',
+                    padding: '2%'
                 }}
             >
-                <Typography variant="h4">
+                <Typography variant="h5">
                     VPN Country Finder was made so <span style={{ color: theme.palette.secondary.main }}>you don't waste any time</span> searching the
                     internet while <span style={{ color: theme.palette.secondary.main }}> your crush is waiting on the sofa</span>.
                 </Typography>
@@ -67,7 +71,7 @@ export default function About() {
                         justifyContent: 'center'
                     }}
                 >
-                    <Typography variant="h4">Consider donating if you liked it :)</Typography>
+                    <Typography variant="h5">Consider donating if you liked it :)</Typography>
                     <Box component="form" action="https://www.paypal.com/donate" method="post" target="_top" sx={{ textAlign: 'center' }}>
                         <input type="hidden" name="business" value="JE5LDTZSQW7BU" />
                         <input type="hidden" name="no_recurring" value="0" />

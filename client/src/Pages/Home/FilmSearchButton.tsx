@@ -48,7 +48,7 @@ const FilmSearchButton = () => {
                 }}
                 onClick={navigateToResults}
             >
-                <SearchIcon sx={{ fontSize: '40px', color: 'primary.dark' }} />
+                <SearchIcon sx={{ fontSize: '40px', color: 'white' }} />
             </Button>
         </Stack>
     );

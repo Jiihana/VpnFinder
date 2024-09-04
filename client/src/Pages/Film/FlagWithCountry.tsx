@@ -1,5 +1,4 @@
-import { Box, colors, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
-import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
+import { Box, Stack, Typography } from '@mui/material';
 
 interface FlagWithCountryProps {
     flagPath: string;

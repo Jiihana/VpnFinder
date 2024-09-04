@@ -1,9 +1,9 @@
 import * as core from 'express-serve-static-core';
 import http from 'http';
-import { GetFilmsResultsRequest } from '../../../client/src/Shared/GetFilmsResults';
 import { EndpointsDefinitions } from './EndpointsDefinitions';
-import { GetFilmResultRequest } from '../../../client/src/Shared/GetFilmResult';
-import { GetWatchProvidersRequest } from '../../../client/src/Shared/GetWatchProviders';
+import { GetFilmsResultsRequest } from '../../../client/src/Shared/RequestsResponses/GetFilmsResults';
+import { GetFilmResultRequest } from '../../../client/src/Shared/RequestsResponses/GetFilmResult';
+import { GetWatchProvidersRequest } from '../../../client/src/Shared/RequestsResponses/GetWatchProviders';
 
 export class VpnFinderApi {
     httpServer: http.Server;

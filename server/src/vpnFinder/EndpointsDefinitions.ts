@@ -1,9 +1,9 @@
-import { GetFilmsResultsResponse } from '../../../client/src/Shared/GetFilmsResults';
-import { GetFilmResultResponse } from '../../../client/src/Shared/GetFilmResult';
 import { ResultatValue } from './ErrorModel';
 import http from 'http';
 import fetch from 'node-fetch';
-import { GetWatchProvidersResponse } from '../../../client/src/Shared/GetWatchProviders';
+import { GetFilmResultResponse } from '../../../client/src/Shared/RequestsResponses/GetFilmResult';
+import { GetFilmsResultsResponse } from '../../../client/src/Shared/RequestsResponses/GetFilmsResults';
+import { GetWatchProvidersResponse } from '../../../client/src/Shared/RequestsResponses/GetWatchProviders';
 
 export class EndpointsDefinitions {
     httpServer: http.Server;

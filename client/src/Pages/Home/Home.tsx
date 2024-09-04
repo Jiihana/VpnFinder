@@ -35,7 +35,7 @@ const Accueil = () => {
                     }}
                 >
                     <Typography variant="h1">VPN Finder</Typography>
-                    <Typography variant="h3">Lorem ipsum pouet pouet</Typography>
+                    <Typography variant="h3">What do you want to watch today?</Typography>
                 </Stack>
                 <Box
                     sx={{

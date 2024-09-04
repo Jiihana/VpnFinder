@@ -7,6 +7,7 @@ import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
 import { WatchProviderModel } from '../../Shared/RequestsResponses/WatchProvidersModel';
 import CountriesByCode from '../../Shared/Misc/CountriesByCode';
+import Loader from '../Loaders/Loader';
 
 const FilmPage = () => {
     const [watchProviders, setWatchProviders] = useState<{ [countryCode: string]: WatchProviderModel }>();
@@ -89,8 +90,6 @@ const FilmPage = () => {
         setWatchProviderNames(getWatchProvidersNames());
     }, [watchProviders]);
 
-    const numberOfCountries = 20;
-
     useEffect(() => {
         const flagWithCountryComponents: React.ReactNode[] = [];
 
@@ -136,7 +135,20 @@ const FilmPage = () => {
     }, [selectedWatchProvider]);
 
     if (film == undefined || watchProviders == undefined) {
-        return <Typography variant="h1">Loading infos</Typography>;
+        return (
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: '2%',
+                    display: 'flex'
+                }}
+            >
+                <Loader message={'Loading infos ...'} />;
+            </Box>
+        );
     }
 
     return (

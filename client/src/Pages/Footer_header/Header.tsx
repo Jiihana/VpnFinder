@@ -8,7 +8,7 @@ import PublicIcon from '@mui/icons-material/Public';
 
 const pages = ['Search', 'About', 'Credits'];
 
-function ResponsiveAppBar() {
+function Header() {
     const navigate = useNavigate();
 
     const handleNav = (page: string) => {
@@ -49,4 +49,4 @@ function ResponsiveAppBar() {
         </AppBar>
     );
 }
-export default ResponsiveAppBar;
+export default Header;

@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ResultPage from './Pages/ResultPage/ResultPage';
 import FilmPage from './Pages/Film/FilmPage';
 import Home from './Pages/Home/Home';
-import ResponsiveAppBar from './Pages/AppBar/ResponsiveAppBar';
+import Header from './Pages/Footer_header/Header';
 import About from './Pages/About/About';
+import Credits from './Pages/Credits/Credits';
+import Footer from './Pages/Footer_header/Footer';
 
 export interface IApplicationProps {}
 
@@ -21,7 +23,8 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
                 <CssBaseline />
 
                 <Router>
-                    <ResponsiveAppBar />
+                    <Header />
+                    <Footer />
                     <Box
                         display="flex"
                         sx={{
@@ -40,7 +43,7 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
                             <Route path="/results/:film" element={<ResultPage />}></Route>
                             <Route path="/film/:filmId" element={<FilmPage />}></Route>
                             <Route path="/About" element={<About />}></Route>
-                            <Route path="/Credits" element={<Home />}></Route>
+                            <Route path="/Credits" element={<Credits />}></Route>
                         </Routes>
                     </Box>
                 </Router>
