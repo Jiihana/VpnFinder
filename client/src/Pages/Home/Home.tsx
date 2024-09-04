@@ -3,65 +3,56 @@ import FilmSearchButton from './FilmSearchButton';
 
 const Accueil = () => {
     return (
-        <Box
-            display="flex"
+        <Stack
+            spacing={15}
             sx={{
-                minHeight: '100%',
                 width: '100%',
-                justifyContent: 'center',
-                alignItems: 'start',
-                marginTop: '5%'
+                height: 'auto',
+                alignItems: 'center',
+                justifyContent: 'start',
+                display: 'flex',
+                marginTop: '5%',
+                marginBottom: '5%',
+                overflow: 'hidden'
             }}
         >
             <Stack
-                spacing={20}
+                display="flex"
+                spacing={10}
                 sx={{
                     width: '100%',
                     height: 'auto',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: '5%',
-                    display: 'flex'
+                    justifyContent: 'start'
                 }}
             >
                 <Stack
-                    spacing={1}
+                    display="flex"
+                    spacing={2}
                     sx={{
                         width: '100%',
-                        height: '100%',
+                        height: 'auto',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        display: 'flex'
+                        paddingTop: '2%'
                     }}
                 >
                     <Typography variant="h1">VPN Finder</Typography>
                     <Typography variant="h3">What do you want to watch today?</Typography>
                 </Stack>
 
-                <Stack
-                    spacing={20}
+                <Box
                     sx={{
                         width: '50%',
                         height: 'auto',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: '5%',
+                        paddingLeft: '3%',
                         display: 'flex'
                     }}
                 >
-                    <Box
-                        sx={{
-                            width: '100%',
-                            height: 'auto',
-                            paddingLeft: '5%',
-                            display: 'flex'
-                        }}
-                    >
-                        <FilmSearchButton />
-                    </Box>
-                </Stack>
+                    <FilmSearchButton />
+                </Box>
             </Stack>
-        </Box>
+        </Stack>
     );
 };
 

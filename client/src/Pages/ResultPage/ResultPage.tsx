@@ -39,7 +39,10 @@ const ResultPage = () => {
                 height: 'auto',
                 alignItems: 'center',
                 justifyContent: 'start',
-                display: 'flex'
+                display: 'flex',
+                marginTop: '5%',
+                marginBottom: '5%',
+                overflow: 'hidden'
             }}
         >
             <Stack
@@ -83,10 +86,12 @@ const ResultPage = () => {
                 display="flex"
                 spacing={5}
                 sx={{
-                    width: '80%',
+                    width: '100%', // Ajustez la largeur pour qu'elle ne dépasse pas le conteneur
+                    maxWidth: '80%', // Définissez une largeur maximale pour éviter le débordement
                     height: 'auto',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    overflow: 'hidden'
                 }}
             >
                 {films.length === 0 ? (
