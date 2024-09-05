@@ -26,13 +26,15 @@ function Header() {
                 <PublicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                 <Typography
                     variant="h6"
+                    onClick={() => handleNav('Search')}
                     sx={{
                         mr: 2,
                         display: { xs: 'none', md: 'flex' },
                         fontWeight: 700,
                         letterSpacing: '.3rem',
                         color: 'inherit',
-                        textDecoration: 'none'
+                        textDecoration: 'none',
+                        cursor: 'pointer'
                     }}
                 >
                     VPNF
