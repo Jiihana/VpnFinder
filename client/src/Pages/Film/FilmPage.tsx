@@ -158,7 +158,7 @@ const FilmPage = () => {
                 height: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginTop: '2%'
+                marginTop: '5%'
             }}
             display="flex"
             spacing={15}
