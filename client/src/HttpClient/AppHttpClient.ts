@@ -7,12 +7,14 @@ import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/R
 export class AppHttpClient {
     private static baseUrl = `http://${process.env.REACT_APP_CLIENT_URL}:${process.env.REACT_APP_GAMESERVER_PORT}`;
 
-    static GetFilms = async (title: string): Promise<HttpResultValue<GetFilmsResultsResponse>> => {
-        return AppHttpClient.CallWithResponseValue<GetFilmsResultsResponse>(`${GetFilmsResultsRequest.Message}?title=${title}`);
+    static GetFilms = async (title: string, includeAdult: string): Promise<HttpResultValue<GetFilmsResultsResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetFilmsResultsResponse>(
+            `${GetFilmsResultsRequest.Message}?title=${title}&includeAdult=${includeAdult}`
+        );
     };
 
-    static GetTvs = async (name: string): Promise<HttpResultValue<GetTvResultsResponse>> => {
-        return AppHttpClient.CallWithResponseValue<GetTvResultsResponse>(`${GetTvResultsRequest.Message}?name=${name}`);
+    static GetTvs = async (name: string, includeAdult: string): Promise<HttpResultValue<GetTvResultsResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetTvResultsResponse>(`${GetTvResultsRequest.Message}?name=${name}&includeAdult=${includeAdult}`);
     };
 
     static GetFilm = async (filmId: number): Promise<HttpResultValue<GetFilmResultResponse>> => {

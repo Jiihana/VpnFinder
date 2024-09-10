@@ -17,7 +17,10 @@ export class VpnFinderApi {
     static registerEndpoint = (application: core.Express) => {
         application.get('/' + GetFilmsResultsRequest.Message, async (req, res) => {
             const filmToSearch = req.query['title'] as string;
-            const result = await EndpointsDefinitions.GetFilmsResults(filmToSearch);
+            const includeAdult = req.query['includeAdult'] as string;
+
+            console.log(`include adult ${includeAdult}`);
+            const result = await EndpointsDefinitions.GetFilmsResults(filmToSearch, includeAdult);
 
             if (!result.success) {
                 return res.status(404).send(result.message);
@@ -28,7 +31,9 @@ export class VpnFinderApi {
 
         application.get('/' + GetTvResultsRequest.Message, async (req, res) => {
             const tvToSearch = req.query['name'] as string;
-            const result = await EndpointsDefinitions.GetTvsResults(tvToSearch);
+            const includeAdult = req.query['includeAdult'] as string;
+            console.log(`include adult ${includeAdult}`);
+            const result = await EndpointsDefinitions.GetTvsResults(tvToSearch, includeAdult);
 
             if (!result.success) {
                 return res.status(404).send(result.message);

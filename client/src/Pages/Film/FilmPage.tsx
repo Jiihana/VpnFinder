@@ -1,14 +1,14 @@
 import { Box, colors, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import FlagWithCountry from './FlagWithCountry';
-import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel';
 import { useParams } from 'react-router-dom';
 import { AppHttpClient } from '../../HttpClient/AppHttpClient';
 import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
-import { WatchProviderModel } from '../../Shared/RequestsResponses/WatchProvidersModel';
 import CountriesByCode from '../../Shared/Misc/CountriesByCode';
 import Loader from '../Loaders/Loader';
-import { TvConverter } from '../../Shared/RequestsResponses/TvResultModel';
+import { FilmResultModel } from '../../Shared/Models/FilmResultModel';
+import { TvHelper } from '../../Shared/Models/TvResultModel';
+import { WatchProviderModel } from '../../Shared/Models/WatchProvidersModel';
 
 const FilmPage = () => {
     const [watchProviders, setWatchProviders] = useState<{ [countryCode: string]: WatchProviderModel }>();
@@ -42,7 +42,7 @@ const FilmPage = () => {
                     return;
                 }
 
-                setFilm(TvConverter.convertTvToFilm(result.value.tv));
+                setFilm(TvHelper.convertTvToFilm(result.value.tv));
             } catch (error) {
                 console.error('Une erreur est survenue lors de la récupération du film', error);
             }

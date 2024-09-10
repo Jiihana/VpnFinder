@@ -9,6 +9,7 @@ import Header from './Pages/Footer_header/Header';
 import About from './Pages/About/About';
 import Credits from './Pages/Credits/Credits';
 import Footer from './Pages/Footer_header/Footer';
+import { DataProvider } from './Shared/DataContext';
 
 export interface IApplicationProps {}
 
@@ -21,31 +22,32 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
         <ThemeProvider theme={darkTheme}>
             <>
                 <CssBaseline />
-
                 <Router>
-                    <Header />
-                    <Footer />
-                    <Box
-                        display="flex"
-                        sx={{
-                            backgroundImage: 'url(/images/pages/home.png)',
-                            backgroundSize: 'auto',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundAttachment: 'fixed',
-                            minHeight: '100vh',
-                            width: '100vw'
-                        }}
-                    >
-                        <Routes>
-                            <Route path="/" element={<Home />}></Route>
+                    <DataProvider>
+                        <Header />
+                        <Footer />
+                        <Box
+                            display="flex"
+                            sx={{
+                                backgroundImage: 'url(/images/pages/home.png)',
+                                backgroundSize: 'auto',
+                                backgroundPosition: 'center',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundAttachment: 'fixed',
+                                minHeight: '100vh',
+                                width: '100vw'
+                            }}
+                        >
+                            <Routes>
+                                <Route path="/" element={<Home />}></Route>
 
-                            <Route path="/results/:film" element={<ResultPage />}></Route>
-                            <Route path="/:type/:filmId" element={<FilmPage />}></Route>
-                            <Route path="/About" element={<About />}></Route>
-                            <Route path="/Credits" element={<Credits />}></Route>
-                        </Routes>
-                    </Box>
+                                <Route path="/results/:film" element={<ResultPage />}></Route>
+                                <Route path="/:type/:filmId" element={<FilmPage />}></Route>
+                                <Route path="/About" element={<About />}></Route>
+                                <Route path="/Credits" element={<Credits />}></Route>
+                            </Routes>
+                        </Box>
+                    </DataProvider>
                 </Router>
             </>
         </ThemeProvider>

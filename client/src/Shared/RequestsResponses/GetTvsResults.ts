@@ -1,4 +1,4 @@
-import { TvResultModel } from './TvResultModel';
+import { TvResultModel } from '../Models/TvResultModel';
 
 export class GetTvResultsRequest {
     static Message = 'GetTvResultsRequest';

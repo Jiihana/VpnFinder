@@ -17,9 +17,9 @@ export class EndpointsDefinitions {
         this.httpServer = httpServer;
     }
 
-    public static async GetFilmsResults(title: string): Promise<ResultatValue<GetFilmsResultsResponse>> {
+    public static async GetFilmsResults(title: string, includeAdult: string): Promise<ResultatValue<GetFilmsResultsResponse>> {
         try {
-            const response = await fetch(this.baseUrl + `search/movie?query=${title}`, {
+            const response = await fetch(this.baseUrl + `search/movie?query=${title}&include_adult=${includeAdult}`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${this.apiKey}`,
@@ -49,9 +49,9 @@ export class EndpointsDefinitions {
         }
     }
 
-    public static async GetTvsResults(name: string): Promise<ResultatValue<GetTvResultsResponse>> {
+    public static async GetTvsResults(name: string, includeAdult: string): Promise<ResultatValue<GetTvResultsResponse>> {
         try {
-            const response = await fetch(this.baseUrl + `search/tv?query=${name}`, {
+            const response = await fetch(this.baseUrl + `search/tv?query=${name}&include_adult=${includeAdult}`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${this.apiKey}`,

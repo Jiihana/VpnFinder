@@ -1,7 +1,7 @@
 import { Box, Stack, styled, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel';
 import { useEffect, useState } from 'react';
+import { FilmResultModel } from '../../Shared/Models/FilmResultModel';
 
 interface ResultFilmComponentProps {
     film: FilmResultModel;
