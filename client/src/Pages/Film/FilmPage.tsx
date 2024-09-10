@@ -8,6 +8,7 @@ import ResultFilmComponent from '../ResultPage/ResultFilmComponent';
 import { WatchProviderModel } from '../../Shared/RequestsResponses/WatchProvidersModel';
 import CountriesByCode from '../../Shared/Misc/CountriesByCode';
 import Loader from '../Loaders/Loader';
+import { TvConverter } from '../../Shared/RequestsResponses/TvResultModel';
 
 const FilmPage = () => {
     const [watchProviders, setWatchProviders] = useState<{ [countryCode: string]: WatchProviderModel }>();
@@ -15,19 +16,33 @@ const FilmPage = () => {
     const [selectedWatchProvider, setSelectedWatchProvider] = useState('');
     const [availableCountries, setAvailableCountries] = useState<React.ReactNode[]>([]);
     const { filmId } = useParams();
+    const { type } = useParams();
 
     const [film, setFilm] = useState<FilmResultModel>();
 
     useEffect(() => {
-        const fetchFilm = async () => {
+        const fetchFilmOrTv = async () => {
             try {
-                const result = await AppHttpClient.GetFilm(+filmId!);
-
-                if (!result.success) {
-                    console.error('Result != succes, fetch films');
+                if (type == 'film' || type == 'movie') {
+                    const result = await AppHttpClient.GetFilm(+filmId!);
+                    if (!result.success) {
+                        console.error('Result != succes, fetch films');
+                        setFilm(undefined);
+                        return;
+                    }
+                    setFilm(result.value.film);
                     return;
                 }
-                setFilm(result.value.film);
+
+                const result = await AppHttpClient.GetTv(+filmId!);
+
+                if (!result.success) {
+                    console.error('Result != succes, fetch tv');
+                    setFilm(undefined);
+                    return;
+                }
+
+                setFilm(TvConverter.convertTvToFilm(result.value.tv));
             } catch (error) {
                 console.error('Une erreur est survenue lors de la récupération du film', error);
             }
@@ -48,7 +63,7 @@ const FilmPage = () => {
             }
         };
 
-        fetchFilm();
+        fetchFilmOrTv();
         fetchWatchProviders();
     }, [filmId]);
 
@@ -134,7 +149,7 @@ const FilmPage = () => {
         setAvailableCountries(flagWithCountryComponents);
     }, [selectedWatchProvider]);
 
-    if (film == undefined || watchProviders == undefined) {
+    if (watchProviders == undefined) {
         return (
             <Box
                 sx={{
@@ -147,6 +162,23 @@ const FilmPage = () => {
                 }}
             >
                 <Loader message={'Loading infos ...'} />;
+            </Box>
+        );
+    }
+
+    if (film == undefined) {
+        return (
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: '10%',
+                    display: 'flex'
+                }}
+            >
+                <Loader message={'404 not found'} />;
             </Box>
         );
     }

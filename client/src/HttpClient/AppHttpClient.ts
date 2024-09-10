@@ -1,5 +1,7 @@
 import { GetFilmResultRequest, GetFilmResultResponse } from '../Shared/RequestsResponses/GetFilmResult';
 import { GetFilmsResultsResponse, GetFilmsResultsRequest } from '../Shared/RequestsResponses/GetFilmsResults';
+import { GetTvResultRequest, GetTvResultResponse } from '../Shared/RequestsResponses/GetTvResult';
+import { GetTvResultsRequest, GetTvResultsResponse } from '../Shared/RequestsResponses/GetTvsResults';
 import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/RequestsResponses/GetWatchProviders';
 
 export class AppHttpClient {
@@ -9,8 +11,16 @@ export class AppHttpClient {
         return AppHttpClient.CallWithResponseValue<GetFilmsResultsResponse>(`${GetFilmsResultsRequest.Message}?title=${title}`);
     };
 
+    static GetTvs = async (name: string): Promise<HttpResultValue<GetTvResultsResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetTvResultsResponse>(`${GetTvResultsRequest.Message}?name=${name}`);
+    };
+
     static GetFilm = async (filmId: number): Promise<HttpResultValue<GetFilmResultResponse>> => {
         return AppHttpClient.CallWithResponseValue<GetFilmResultResponse>(`${GetFilmResultRequest.Message}?filmId=${filmId}`);
+    };
+
+    static GetTv = async (tvId: number): Promise<HttpResultValue<GetTvResultResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetTvResultResponse>(`${GetTvResultRequest.Message}?tvId=${tvId}`);
     };
 
     static GetWatchProviders = async (filmId: number): Promise<HttpResultValue<GetWatchProvidersResponse>> => {

@@ -6,13 +6,14 @@ import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel'
 import { useEffect, useState } from 'react';
 import ResultFilmComponent from './ResultFilmComponent';
 import Loader from '../Loaders/Loader';
+import { TvConverter, TvResultModel } from '../../Shared/RequestsResponses/TvResultModel';
 
 const ResultPage = () => {
     const { film } = useParams();
 
     const [films, setFilms] = useState<FilmResultModel[]>([]);
 
-    const hasEnoughDatas = (film: FilmResultModel) => {
+    const hasEnoughDatasFilm = (film: FilmResultModel) => {
         let filledData = 0;
 
         if (film.overview != undefined && film.overview != '' && film.overview != null) {
@@ -34,23 +35,59 @@ const ResultPage = () => {
         return filledData >= 2;
     };
 
-    useEffect(() => {
-        const fetchFilms = async () => {
-            try {
-                const result = await AppHttpClient.GetFilms(film as string);
+    const hasEnoughDatasTv = (film: TvResultModel) => {
+        let filledData = 0;
 
-                if (!result.success) {
+        if (film.overview != undefined && film.overview != '' && film.overview != null) {
+            filledData++;
+        }
+
+        if (film.name != undefined && film.name != '' && film.name != null) {
+            filledData++;
+        }
+
+        if (film.first_air_date != undefined && film.first_air_date != '' && film.first_air_date != null) {
+            filledData++;
+        }
+
+        if (film.poster_path != undefined && film.poster_path != '' && film.poster_path != null) {
+            filledData++;
+        }
+
+        return filledData >= 2;
+    };
+
+    useEffect(() => {
+        const fetchFilmsAndTv = async () => {
+            try {
+                const resultMovies = await AppHttpClient.GetFilms(film as string);
+
+                if (!resultMovies.success) {
                     console.error('Une erreur est survenue lors de la récupération des films, mais la request est passée');
                     return;
                 }
 
-                setFilms(result.value.films.filter(hasEnoughDatas));
+                const resultTv = await AppHttpClient.GetTvs(film as string);
+
+                if (!resultTv.success) {
+                    console.error('Une erreur est survenue lors de la récupération des tv, mais la request est passée');
+                    return;
+                }
+
+                const films = resultMovies.value.films.filter(hasEnoughDatasFilm);
+                const tvs = resultTv.value.tvs.filter(hasEnoughDatasTv).map(TvConverter.convertTvToFilm);
+
+                console.log(resultTv.value.tvs);
+                console.log('--------------');
+                console.log(tvs);
+
+                setFilms([...films, ...tvs]);
             } catch (error) {
-                console.error('Une erreur est survenue lors de la récupération des films', error);
+                console.error('Une erreur est survenue lors de la récupération des films et tv', error);
             }
         };
 
-        fetchFilms();
+        fetchFilmsAndTv();
     }, [film]);
 
     return (

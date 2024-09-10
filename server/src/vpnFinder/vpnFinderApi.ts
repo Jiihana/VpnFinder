@@ -4,6 +4,8 @@ import { EndpointsDefinitions } from './EndpointsDefinitions';
 import { GetFilmsResultsRequest } from '../../../client/src/Shared/RequestsResponses/GetFilmsResults';
 import { GetFilmResultRequest } from '../../../client/src/Shared/RequestsResponses/GetFilmResult';
 import { GetWatchProvidersRequest } from '../../../client/src/Shared/RequestsResponses/GetWatchProviders';
+import { GetTvResultsRequest } from '../../../client/src/Shared/RequestsResponses/GetTvsResults';
+import { GetTvResultRequest } from '../../../client/src/Shared/RequestsResponses/GetTvResult';
 
 export class VpnFinderApi {
     httpServer: http.Server;
@@ -24,9 +26,31 @@ export class VpnFinderApi {
             return res.status(200).json(result.value);
         });
 
+        application.get('/' + GetTvResultsRequest.Message, async (req, res) => {
+            const tvToSearch = req.query['name'] as string;
+            const result = await EndpointsDefinitions.GetTvsResults(tvToSearch);
+
+            if (!result.success) {
+                return res.status(404).send(result.message);
+            }
+
+            return res.status(200).json(result.value);
+        });
+
         application.get('/' + GetFilmResultRequest.Message, async (req, res) => {
             const filmId = req.query['filmId'] as string;
             const result = await EndpointsDefinitions.GetFilmResult(+filmId);
+
+            if (!result.success) {
+                return res.status(404).send(result.message);
+            }
+
+            return res.status(200).json(result.value);
+        });
+
+        application.get('/' + GetTvResultRequest.Message, async (req, res) => {
+            const tvId = req.query['tvId'] as string;
+            const result = await EndpointsDefinitions.GetTvResult(+tvId);
 
             if (!result.success) {
                 return res.status(404).send(result.message);

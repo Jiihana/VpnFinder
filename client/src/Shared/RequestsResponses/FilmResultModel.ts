@@ -5,4 +5,5 @@ export type FilmResultModel = {
     poster_path: string;
     adult: boolean;
     id: number;
+    isTv: boolean;
 };

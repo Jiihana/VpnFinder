@@ -32,8 +32,10 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
     const navigate = useNavigate();
     const [posterPath, setPosterPath] = useState(`https://image.tmdb.org/t/p/original${props.film.poster_path}`);
 
+    const type = props.film.isTv == true ? 'tv' : 'film';
+
     const navigateToFilmPage = () => {
-        navigate(`/film/${props.film.id}`);
+        navigate(`/${type}/${props.film.id}`);
     };
 
     useEffect(() => {
