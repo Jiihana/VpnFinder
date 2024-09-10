@@ -47,7 +47,13 @@ export default function Credits() {
                 />
                 <CreditComponent
                     title={'Background image by @starline on Freepik'}
-                    description={''}
+                    description={'https://www.flaticon.com/'}
+                    logoPath={'https://logowik.com/content/uploads/images/freepik-new-20237240.logowik.com.webp'}
+                />
+
+                <CreditComponent
+                    title={'Tab icon by Freepik on Freepik'}
+                    description={'https://www.flaticon.com/free-icons/travel'}
                     logoPath={'https://logowik.com/content/uploads/images/freepik-new-20237240.logowik.com.webp'}
                 />
             </Stack>

@@ -142,7 +142,7 @@ const FilmPage = () => {
                     height: '100%',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginTop: '2%',
+                    marginTop: '10%',
                     display: 'flex'
                 }}
             >

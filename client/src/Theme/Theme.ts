@@ -13,6 +13,6 @@ export const themeOptions: ThemeOptions = {
             main: '#f71a64',
             dark: '#415067'
         }
-    }
-    // typography: { fontFamily: ['TypeWrong', 'cursive'].join(',') }
+    },
+    typography: { fontFamily: ['Space Grotesk'].join(',') }
 };

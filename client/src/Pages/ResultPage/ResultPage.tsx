@@ -66,7 +66,7 @@ const ResultPage = () => {
                         paddingTop: '2%'
                     }}
                 >
-                    <Typography variant="h1">VPN Finder</Typography>
+                    <Typography variant="h1">VPN Country Finder</Typography>
                     <Typography variant="h3">Here are the results:</Typography>
                 </Stack>
 

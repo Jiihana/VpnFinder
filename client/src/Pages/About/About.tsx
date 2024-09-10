@@ -16,7 +16,7 @@ export default function About() {
                 marginTop: '5%'
             }}
         >
-            <Typography variant="h1">About VPN Finder</Typography>
+            <Typography variant="h1">About VPN Country Finder</Typography>
 
             <Stack
                 sx={{

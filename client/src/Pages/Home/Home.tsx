@@ -37,7 +37,7 @@ const Accueil = () => {
                         paddingTop: '2%'
                     }}
                 >
-                    <Typography variant="h1">VPN Finder</Typography>
+                    <Typography variant="h1">VPN Country Finder</Typography>
                     <Typography variant="h3">What do you want to watch today?</Typography>
                 </Stack>
 
