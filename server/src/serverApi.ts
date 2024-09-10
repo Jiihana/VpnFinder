@@ -11,7 +11,7 @@ const httpServer = http.createServer(application);
 
 application.use(
     cors({
-        origin: 'http://localhost:3000',
+        origin: '*', // unless...
         credentials: true //access-control-allow-credentials:true
     })
 );
