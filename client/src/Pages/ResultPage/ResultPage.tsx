@@ -18,7 +18,7 @@ const ResultPage = () => {
                 const result = await AppHttpClient.GetFilms(film as string);
 
                 if (!result.success) {
-                    console.error('PROBLEME OILALALA');
+                    console.error('Une erreur est survenue lors de la récupération des films, mais la request est passée');
                     return;
                 }
 

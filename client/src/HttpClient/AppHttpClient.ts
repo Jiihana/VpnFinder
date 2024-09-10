@@ -44,7 +44,6 @@ export class AppHttpClient {
 
     static async CallWithResponseValue<T>(url: string): Promise<HttpResultValue<T>> {
         try {
-            console.log(`${AppHttpClient.baseUrl}/${url}`);
             var response = await fetch(`${AppHttpClient.baseUrl}/${url}`, {
                 method: 'GET'
             });
