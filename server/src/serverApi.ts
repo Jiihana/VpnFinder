@@ -2,6 +2,7 @@ import http from 'http';
 import express from 'express';
 import { VpnFinderApi } from './vpnFinder/vpnFinderApi';
 import cors from 'cors';
+require('dotenv').config({ path: ['.env.local', '.env'] });
 
 const application = express();
 
@@ -46,4 +47,4 @@ application.use((req, res, next) => {
 });
 
 /** Listen */
-httpServer.listen(32769, () => console.info(`Server is running`));
+httpServer.listen(process.env.REACT_APP_GAMESERVER_PORT, () => console.info(`Server is running`));

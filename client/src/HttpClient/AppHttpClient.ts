@@ -3,7 +3,8 @@ import { GetFilmsResultsResponse, GetFilmsResultsRequest } from '../Shared/Reque
 import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/RequestsResponses/GetWatchProviders';
 
 export class AppHttpClient {
-    private static baseUrl = 'http://localhost:32769';
+    private static baseUrl = `http://${process.env.REACT_APP_CLIENT_URL}:${process.env.REACT_APP_GAMESERVER_PORT}`;
+    // private static baseUrl = 'http://localhost:32769';
 
     static GetFilms = async (title: string): Promise<HttpResultValue<GetFilmsResultsResponse>> => {
         return AppHttpClient.CallWithResponseValue<GetFilmsResultsResponse>(`${GetFilmsResultsRequest.Message}?title=${title}`);
