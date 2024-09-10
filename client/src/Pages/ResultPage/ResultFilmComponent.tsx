@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack, styled, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { FilmResultModel } from '../../Shared/RequestsResponses/FilmResultModel';
 import { useEffect, useState } from 'react';
@@ -6,6 +6,27 @@ import { useEffect, useState } from 'react';
 interface ResultFilmComponentProps {
     film: FilmResultModel;
 }
+
+const CustomTypography = styled(Typography)({
+    height: '50%',
+    overflowY: 'auto', // Affiche une scrollbar verticale si le texte dépasse
+    textOverflow: 'ellipsis',
+    WebkitBoxOrient: 'vertical',
+    paddingRight: '5%',
+    '&::-webkit-scrollbar': {
+        width: '3px' // Largeur de la scrollbar
+    },
+    '&::-webkit-scrollbar-track': {
+        background: '#f1f1f1' // Couleur de la piste de la scrollbar
+    },
+    '&::-webkit-scrollbar-thumb': {
+        background: '#888', // Couleur du pouce de la scrollbar
+        borderRadius: '10px' // Coins arrondis du pouce de la scrollbar
+    },
+    '&::-webkit-scrollbar-thumb:hover': {
+        background: '#555' // Couleur du pouce au survol
+    }
+});
 
 const ResultFilmComponent = (props: ResultFilmComponentProps) => {
     const navigate = useNavigate();
@@ -77,16 +98,7 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
                         {props.film.release_date}
                     </Typography>
                 </Stack>
-                <Typography
-                    variant="h6"
-                    sx={{
-                        height: '50%',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                    }}
-                >
-                    {props.film.overview}
-                </Typography>
+                <CustomTypography variant="h6">{props.film.overview}</CustomTypography>
             </Stack>
         </Stack>
     );
