@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import PublicIcon from '@mui/icons-material/Public';
-import { FormGroup, FormControlLabel, Switch, Stack, colors } from '@mui/material';
+import { FormGroup, FormControlLabel, Switch, Stack } from '@mui/material';
 import { useContext, useState } from 'react';
 import { DataContext } from '../../Shared/DataContext';
 
@@ -34,16 +34,22 @@ function Header() {
         <AppBar position="fixed">
             <Toolbar
                 disableGutters
-                sx={{ paddingLeft: '2%', backgroundColor: 'primary.dark', justifyContent: 'space-between', alignItems: 'center' }}
+                sx={{
+                    paddingLeft: '2%',
+                    backgroundColor: 'primary.dark',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    height: '5vh'
+                }}
             >
-                <Stack direction={'row'} sx={{ justifyContent: 'center', alignItems: 'center', width: 'auto' }}>
-                    <PublicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                <Stack direction="row" sx={{ justifyContent: 'center', alignItems: 'center', width: 'auto' }}>
+                    <PublicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: '2%' }} />
                     <Typography
                         variant="h6"
                         onClick={() => handleNav('Search')}
                         sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
+                            mr: '2%',
+                            display: { xs: 'none' },
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
@@ -53,16 +59,15 @@ function Header() {
                     >
                         VPNCF
                     </Typography>
-
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Stack direction={'row'}>
                         {pages.map((page) => (
-                            <Button key={page} onClick={handleNav.bind(null, page)} sx={{ my: 2, color: 'white', display: 'block' }}>
+                            <Button key={page} onClick={handleNav.bind(null, page)} sx={{ my: 2, color: 'white', display: 'block', width: 'auto' }}>
                                 {page}
                             </Button>
                         ))}
-                    </Box>
+                    </Stack>
                 </Stack>
-                <FormGroup sx={{ display: 'flex', width: '15%' }}>
+                <FormGroup sx={{ display: 'flex', width: '50%', justifyContent: 'flex-end' }}>
                     <FormControlLabel
                         control={<Switch checked={checked} onChange={handleChange} />}
                         label="Show adult content"
@@ -74,4 +79,5 @@ function Header() {
         </AppBar>
     );
 }
+
 export default Header;
