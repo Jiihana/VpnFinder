@@ -23,7 +23,7 @@ const FilmPage = () => {
     useEffect(() => {
         const fetchFilmOrTv = async () => {
             try {
-                if (type == 'film' || type == 'movie') {
+                if (type === 'film' || type === 'movie') {
                     const result = await AppHttpClient.GetFilm(+filmId!);
                     if (!result.success) {
                         console.error('Result != succes, fetch films');
@@ -75,7 +75,7 @@ const FilmPage = () => {
         const getWatchProvidersNames = (): string[] => {
             let providersNames: string[] = [];
 
-            if (watchProviders == undefined) {
+            if (watchProviders === undefined) {
                 return providersNames;
             }
 
@@ -84,11 +84,11 @@ const FilmPage = () => {
             }
 
             Object.entries(watchProviders).forEach(([countryCode, providerModel]) => {
-                if (providerModel.flatrate == undefined) {
+                if (providerModel.flatrate === undefined) {
                     return;
                 }
 
-                if (providerModel.flatrate.length == 0) {
+                if (providerModel.flatrate.length === 0) {
                     return;
                 }
 
@@ -108,7 +108,7 @@ const FilmPage = () => {
     useEffect(() => {
         const flagWithCountryComponents: React.ReactNode[] = [];
 
-        if (watchProviders == undefined) {
+        if (watchProviders === undefined) {
             return;
         }
 
@@ -117,16 +117,16 @@ const FilmPage = () => {
         }
 
         Object.entries(watchProviders).forEach(([countryCode, providerModel]) => {
-            if (providerModel.flatrate == undefined) {
+            if (providerModel.flatrate === undefined) {
                 return;
             }
 
-            if (providerModel.flatrate.length == 0) {
+            if (providerModel.flatrate.length === 0) {
                 return;
             }
 
             providerModel.flatrate.forEach((flatrate) => {
-                if (flatrate.provider_name == selectedWatchProvider) {
+                if (flatrate.provider_name === selectedWatchProvider) {
                     flagWithCountryComponents.push(
                         <Grid
                             item
@@ -149,7 +149,7 @@ const FilmPage = () => {
         setAvailableCountries(flagWithCountryComponents);
     }, [selectedWatchProvider]);
 
-    if (watchProviders == undefined) {
+    if (watchProviders === undefined) {
         return (
             <Box
                 sx={{
@@ -166,7 +166,7 @@ const FilmPage = () => {
         );
     }
 
-    if (film == undefined) {
+    if (film === undefined) {
         return (
             <Box
                 sx={{
@@ -231,7 +231,7 @@ const FilmPage = () => {
                         justifyContent: 'center'
                     }}
                 >
-                    {watchProviderNames.length != 0 ? (
+                    {watchProviderNames.length !== 0 ? (
                         <>
                             <Typography variant="h6">
                                 It's available to watch with a subscription on these streaming plateforms/countries :)
@@ -255,7 +255,7 @@ const FilmPage = () => {
                     )}
                 </Stack>
 
-                {availableCountries.length != 0 ? (
+                {availableCountries.length !== 0 ? (
                     <Grid
                         container
                         sx={{

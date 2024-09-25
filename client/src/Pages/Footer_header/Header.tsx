@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import PublicIcon from '@mui/icons-material/Public';
 import { FormGroup, FormControlLabel, Switch, Stack, colors } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { DataContext } from '../../Shared/DataContext';
 
 const pages = ['Search', 'About', 'Credits'];
@@ -17,7 +17,7 @@ function Header() {
     const dataContext = useContext(DataContext);
 
     const handleNav = (page: string) => {
-        if (page == pages[0]) {
+        if (page === pages[0]) {
             navigate(`/`);
             return;
         }
@@ -27,7 +27,7 @@ function Header() {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setChecked(event.target.checked);
-        dataContext.setIncludeAdult(checked);
+        dataContext.setIncludeAdult(event.target.checked);
     };
 
     return (

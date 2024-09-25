@@ -12,19 +12,19 @@ export class FilmHelper {
     static hasEnoughDatasFilm = (film: FilmResultModel) => {
         let filledData = 0;
 
-        if (film.overview != undefined && film.overview != '' && film.overview != null) {
+        if (film.overview !== undefined && film.overview !== '' && film.overview !== null) {
             filledData++;
         }
 
-        if (film.title != undefined && film.title != '' && film.title != null) {
+        if (film.title !== undefined && film.title !== '' && film.title !== null) {
             filledData++;
         }
 
-        if (film.release_date != undefined && film.release_date != '' && film.release_date != null) {
+        if (film.release_date !== undefined && film.release_date !== '' && film.release_date !== null) {
             filledData++;
         }
 
-        if (film.poster_path != undefined && film.poster_path != '' && film.poster_path != null) {
+        if (film.poster_path !== undefined && film.poster_path !== '' && film.poster_path !== null) {
             filledData++;
         }
 

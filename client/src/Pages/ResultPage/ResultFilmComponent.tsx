@@ -32,14 +32,14 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
     const navigate = useNavigate();
     const [posterPath, setPosterPath] = useState(`https://image.tmdb.org/t/p/original${props.film.poster_path}`);
 
-    const type = props.film.isTv == true ? 'tv' : 'film';
+    const type = props.film.isTv === true ? 'tv' : 'film';
 
     const navigateToFilmPage = () => {
         navigate(`/${type}/${props.film.id}`);
     };
 
     useEffect(() => {
-        if (props.film.poster_path == undefined || props.film.poster_path == null) {
+        if (props.film.poster_path === undefined || props.film.poster_path == null) {
             setPosterPath(
                 'https://static.displate.com/857x1200/displate/2022-04-15/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.jpg'
             );

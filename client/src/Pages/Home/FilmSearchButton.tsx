@@ -24,7 +24,7 @@ const FilmSearchButton = () => {
     const { film } = useParams();
 
     useEffect(() => {
-        if (film != undefined) {
+        if (film !== undefined) {
             setInputValue(film);
         }
     }, [film]);

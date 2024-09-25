@@ -25,19 +25,19 @@ export class TvHelper {
     static hasEnoughDatasTv = (film: TvResultModel) => {
         let filledData = 0;
 
-        if (film.overview != undefined && film.overview != '' && film.overview != null) {
+        if (film.overview !== undefined && film.overview !== '' && film.overview !== null) {
             filledData++;
         }
 
-        if (film.name != undefined && film.name != '' && film.name != null) {
+        if (film.name !== undefined && film.name !== '' && film.name !== null) {
             filledData++;
         }
 
-        if (film.first_air_date != undefined && film.first_air_date != '' && film.first_air_date != null) {
+        if (film.first_air_date !== undefined && film.first_air_date !== '' && film.first_air_date !== null) {
             filledData++;
         }
 
-        if (film.poster_path != undefined && film.poster_path != '' && film.poster_path != null) {
+        if (film.poster_path !== undefined && film.poster_path !== '' && film.poster_path !== null) {
             filledData++;
         }
 
