@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import PublicIcon from '@mui/icons-material/Public';
-import { FormGroup, FormControlLabel, Switch, Stack } from '@mui/material';
+import { FormGroup, FormControlLabel, Switch, Stack, colors } from '@mui/material';
 import { useContext, useState } from 'react';
 import { DataContext } from '../../Shared/DataContext';
 
@@ -31,7 +31,7 @@ function Header() {
     };
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="fixed" sx={{ height: 'auto' }}>
             <Toolbar
                 disableGutters
                 sx={{
@@ -39,29 +39,52 @@ function Header() {
                     backgroundColor: 'primary.dark',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    height: '5vh'
+                    minHeight: '5vh',
+                    maxHeight: '5vh'
                 }}
             >
                 <Stack direction="row" sx={{ justifyContent: 'center', alignItems: 'center', width: 'auto' }}>
-                    <PublicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: '2%' }} />
+                    <PublicIcon sx={{ display: { xs: 'none', sm: 'flex', md: 'flex', ls: 'flex', xl: 'flex' }, mr: '2%' }} />
                     <Typography
                         variant="h6"
                         onClick={() => handleNav('Search')}
                         sx={{
                             mr: '2%',
-                            display: { xs: 'none' },
+                            display: { xs: 'none', sm: 'flex', md: 'flex', ls: 'flex', xl: 'flex' },
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            fontSize: {
+                                sm: '1rem', // écrans moyens
+                                md: '1rem', // grands écrans
+                                lg: '1rem', // très grands écrans
+                                xl: '1rem' // écrans extra larges
+                            }
                         }}
                     >
                         VPNCF
                     </Typography>
                     <Stack direction={'row'}>
                         {pages.map((page) => (
-                            <Button key={page} onClick={handleNav.bind(null, page)} sx={{ my: 2, color: 'white', display: 'block', width: 'auto' }}>
+                            <Button
+                                key={page}
+                                onClick={handleNav.bind(null, page)}
+                                sx={{
+                                    my: 2,
+                                    color: 'white',
+                                    display: 'block',
+                                    width: 'auto',
+                                    fontSize: {
+                                        xs: '0.75rem', // petite taille pour les petits écrans (mobile)
+                                        sm: '1rem', // écrans moyens
+                                        md: '1rem', // grands écrans
+                                        lg: '1rem', // très grands écrans
+                                        xl: '1rem' // écrans extra larges
+                                    }
+                                }}
+                            >
                                 {page}
                             </Button>
                         ))}
@@ -70,9 +93,23 @@ function Header() {
                 <FormGroup sx={{ display: 'flex', width: '50%', justifyContent: 'flex-end' }}>
                     <FormControlLabel
                         control={<Switch checked={checked} onChange={handleChange} />}
-                        label="Show adult content"
+                        label={
+                            <Typography
+                                sx={{
+                                    fontSize: {
+                                        xs: '0.75rem',
+                                        sm: '1rem',
+                                        md: '1rem',
+                                        lg: '1rem',
+                                        xl: '1rem'
+                                    }
+                                }}
+                            >
+                                Show adult content
+                            </Typography>
+                        }
                         labelPlacement="start"
-                        sx={{ paddingRight: '5%' }}
+                        sx={{ paddingRight: '2%', display: 'flex' }}
                     />
                 </FormGroup>
             </Toolbar>
