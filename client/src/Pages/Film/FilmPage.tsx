@@ -190,15 +190,21 @@ const FilmPage = () => {
                 height: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginTop: '5%'
+                marginTop: { xs: '20%', sm: '15%', md: '10%', lg: '8%', xl: '5%' },
+                gap: {
+                    xs: 5,
+                    sm: 8,
+                    md: 10,
+                    lg: 15,
+                    xl: 15
+                }
             }}
             display="flex"
-            spacing={15}
         >
             <Box
                 display="flex"
                 sx={{
-                    width: '60%',
+                    width: { xs: '95%', sm: '90%', md: '80%', lg: '70%', xl: '60%' },
                     height: 'auto',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -211,7 +217,13 @@ const FilmPage = () => {
                 display="flex"
                 spacing={10}
                 sx={{
-                    width: '90%',
+                    width: {
+                        xs: '95%',
+                        sm: '90%',
+                        md: '90%',
+                        lg: '90%',
+                        xl: '90%'
+                    },
                     height: '100%',
                     alignItems: 'flex-start',
                     justifyContent: 'center',
@@ -233,17 +245,46 @@ const FilmPage = () => {
                 >
                     {watchProviderNames.length !== 0 ? (
                         <>
-                            <Typography variant="h6">
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    fontSize: {
+                                        xs: '1rem',
+                                        sm: '1.2rem',
+                                        md: '1.2rem',
+                                        lg: '1.2rem',
+                                        xl: '1.2rem'
+                                    }
+                                }}
+                            >
                                 It's available to watch with a subscription on these streaming plateforms/countries :)
                             </Typography>
                             <FormControl
                                 sx={{
-                                    width: '20%'
+                                    width: {
+                                        xs: '50%',
+                                        sm: '40%',
+                                        md: '30%',
+                                        lg: '25%',
+                                        xl: '25%'
+                                    }
                                 }}
                             >
-                                <Select value={selectedWatchProvider} onChange={handleChange}>
+                                <Select
+                                    value={selectedWatchProvider}
+                                    onChange={handleChange}
+                                    sx={{
+                                        fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' } // Taille de texte responsive
+                                    }}
+                                >
                                     {watchProviderNames.map((watchProviderName, index) => (
-                                        <MenuItem key={index} value={watchProviderName}>
+                                        <MenuItem
+                                            key={index}
+                                            value={watchProviderName}
+                                            sx={{
+                                                fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' } // Taille des items responsive
+                                            }}
+                                        >
                                             {watchProviderName}
                                         </MenuItem>
                                     ))}

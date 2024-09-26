@@ -65,26 +65,50 @@ const ResultPage = () => {
 
     return (
         <Stack
-            spacing={15}
             sx={{
                 width: '100%',
                 height: 'auto',
                 alignItems: 'center',
                 justifyContent: 'start',
                 display: 'flex',
-                marginTop: '5%',
-                marginBottom: '5%',
+                marginTop: {
+                    xs: '15%',
+                    sm: '15%',
+                    md: '10%',
+                    lg: '5%',
+                    xl: '5%'
+                },
+                gap: {
+                    xs: 5,
+                    sm: 9,
+                    md: 11,
+                    lg: 13,
+                    xl: 15
+                },
+                marginBottom: {
+                    xs: '18%',
+                    sm: '12%',
+                    md: '9%',
+                    lg: '7%',
+                    xl: '5%'
+                },
                 overflow: 'hidden'
             }}
         >
             <Stack
                 display="flex"
-                spacing={10}
                 sx={{
                     width: '100%',
                     height: 'auto',
                     alignItems: 'center',
-                    justifyContent: 'start'
+                    justifyContent: 'start',
+                    gap: {
+                        xs: 4,
+                        sm: 4,
+                        md: 6,
+                        lg: 8,
+                        xl: 10
+                    }
                 }}
             >
                 <Stack
@@ -98,8 +122,34 @@ const ResultPage = () => {
                         paddingTop: '2%'
                     }}
                 >
-                    <Typography variant="h1">VPN Country Finder</Typography>
-                    <Typography variant="h3">Here are the results:</Typography>
+                    <Typography
+                        variant="h1"
+                        sx={{
+                            fontSize: {
+                                xs: '2rem',
+                                sm: '3rem',
+                                md: '4rem',
+                                lg: '5rem',
+                                xl: '6rem'
+                            }
+                        }}
+                    >
+                        VPN Country Finder
+                    </Typography>
+                    <Typography
+                        variant="h3"
+                        sx={{
+                            fontSize: {
+                                xs: '1rem',
+                                sm: '1.5rem',
+                                md: '2rem',
+                                lg: '2.5rem',
+                                xl: '3rem'
+                            }
+                        }}
+                    >
+                        Here are the results:
+                    </Typography>
                 </Stack>
 
                 <Box
@@ -134,12 +184,12 @@ const ResultPage = () => {
                         display: 'flex'
                     }}
                 >
-                    <FormGroup sx={{ display: 'flex', width: '15%' }}>
+                    <FormGroup sx={{ display: 'flex', width: '100%' }}>
                         <FormControlLabel
                             control={<Switch checked={seriesOnly} onChange={handleChange} />}
                             label="Series only"
                             labelPlacement="end"
-                            sx={{ paddingLeft: '5%' }}
+                            sx={{ paddingLeft: '1%' }}
                         />
                     </FormGroup>
                 </Box>

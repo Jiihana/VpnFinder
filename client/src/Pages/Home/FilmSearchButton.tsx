@@ -32,12 +32,19 @@ const FilmSearchButton = () => {
     return (
         <Stack
             display="flex"
-            direction="row"
+            direction={'row'}
             sx={{
                 width: '100%',
                 height: 'auto',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                gap: {
+                    xs: '0.2rem',
+                    sm: '0.4rem',
+                    md: '0.6rem',
+                    lg: '0.8rem',
+                    xl: '1rem'
+                }
             }}
         >
             <TextField
@@ -47,9 +54,35 @@ const FilmSearchButton = () => {
                 required
                 placeholder="Avengers ..."
                 variant="outlined"
-                inputProps={{ style: { fontSize: 25, textAlign: 'start' } }}
-                InputLabelProps={{ style: { fontSize: 25 } }}
-                sx={{ input: { color: 'white' }, width: '80%', height: 'auto' }}
+                InputProps={{
+                    sx: {
+                        fontSize: {
+                            xs: '1rem',
+                            sm: '1.3rem',
+                            md: '1.6rem',
+                            lg: '1.9rem',
+                            xl: '2.1rem'
+                        },
+                        color: 'white',
+                        textAlign: 'start'
+                    }
+                }}
+                InputLabelProps={{
+                    sx: {
+                        fontSize: {
+                            xs: '1rem',
+                            sm: '1.3rem',
+                            md: '1.6rem',
+                            lg: '1.9rem',
+                            xl: '2.1rem'
+                        }
+                    }
+                }}
+                sx={{
+                    width: '80%',
+                    height: 'auto',
+                    marginBottom: { xs: '1rem', sm: 0 }
+                }}
             />
             <Button
                 color="primary"
@@ -63,7 +96,18 @@ const FilmSearchButton = () => {
                 onClick={navigateToResults}
                 disabled={!inputValue.trim()}
             >
-                <SearchIcon sx={{ fontSize: '40px', color: 'white' }} />
+                <SearchIcon
+                    sx={{
+                        fontSize: {
+                            xs: '2rem',
+                            sm: '2.2rem',
+                            md: '2.3rem',
+                            lg: '2.4rem',
+                            xl: '2.5rem'
+                        },
+                        color: 'white'
+                    }}
+                />
             </Button>
         </Stack>
     );

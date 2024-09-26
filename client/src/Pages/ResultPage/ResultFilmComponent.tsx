@@ -1,4 +1,4 @@
-import { Box, Stack, styled, Typography } from '@mui/material';
+import { Box, colors, Stack, styled, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FilmResultModel } from '../../Shared/Models/FilmResultModel';
@@ -51,7 +51,6 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
 
     return (
         <Stack
-            spacing={1}
             direction="row"
             onClick={navigateToFilmPage}
             sx={{
@@ -63,7 +62,14 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
                 padding: '0.5%',
                 cursor: 'pointer',
                 boxSizing: 'border-box',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                gap: {
+                    xs: '1.3rem',
+                    sm: '2rem',
+                    md: '2rem',
+                    lg: '1rem',
+                    xl: '0rem'
+                }
             }}
         >
             <Box
@@ -78,32 +84,72 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
             />
 
             <Stack
-                spacing={1}
                 sx={{
                     height: '100%',
                     width: '75%',
                     paddingBottom: '3%',
                     paddingTop: '1%',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    gap: {
+                        xs: '1.75rem',
+                        sm: '2rem',
+                        md: '2.25rem',
+                        lg: '2.25rem',
+                        xl: '2.25rem'
+                    }
                 }}
             >
                 <Stack
-                    spacing={0.5}
+                    spacing={1}
                     sx={{
-                        height: '50%',
+                        height: 'auto',
                         display: 'flex',
-                        flexDirection: 'column',
-                        overflow: 'hidden'
+                        flexDirection: 'column'
                     }}
                 >
-                    <Typography variant="h4" sx={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            fontSize: {
+                                xs: '1.75rem',
+                                sm: '2rem',
+                                md: '2.25rem',
+                                lg: '2.25rem',
+                                xl: '2.25rem'
+                            }
+                        }}
+                    >
                         {props.film.title}
                     </Typography>
-                    <Typography variant="body1" sx={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            fontSize: {
+                                xs: '1rem'
+                            }
+                        }}
+                    >
                         {props.film.release_date}
                     </Typography>
                 </Stack>
-                <CustomTypography variant="h6">{props.film.overview}</CustomTypography>
+                <CustomTypography
+                    variant="h6"
+                    sx={{
+                        fontSize: {
+                            xs: '1rem',
+                            sm: '1rem',
+                            md: '1.2rem',
+                            lg: '1.2rem',
+                            xl: '1.2rem'
+                        }
+                    }}
+                >
+                    {props.film.overview}
+                </CustomTypography>
             </Stack>
         </Stack>
     );
