@@ -132,6 +132,7 @@ export class EndpointsDefinitions {
 
             const result = await response.json();
 
+            console.log(result);
             return {
                 value: new GetTvResultResponse(result),
                 success: true
@@ -145,9 +146,9 @@ export class EndpointsDefinitions {
         }
     }
 
-    public static async GetWatchProviders(filmId: number): Promise<ResultatValue<GetWatchProvidersResponse>> {
+    public static async GetWatchProviders(filmId: number, type: string): Promise<ResultatValue<GetWatchProvidersResponse>> {
         try {
-            const response = await fetch(this.baseUrl + `movie/${filmId}/watch/providers`, {
+            const response = await fetch(this.baseUrl + `${type}/${filmId}/watch/providers`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${this.apiKey}`,

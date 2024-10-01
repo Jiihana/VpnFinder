@@ -66,7 +66,8 @@ export class VpnFinderApi {
 
         application.get('/' + GetWatchProvidersRequest.Message, async (req, res) => {
             const filmId = req.query['filmId'] as string;
-            const result = await EndpointsDefinitions.GetWatchProviders(+filmId);
+            const type = req.query['type'] as string;
+            const result = await EndpointsDefinitions.GetWatchProviders(+filmId, type);
 
             if (!result.success) {
                 return res.status(404).send(result.message);
