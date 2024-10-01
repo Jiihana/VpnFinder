@@ -13,10 +13,33 @@ export default function About() {
                 alignItems: 'center',
                 justifyContent: 'flex-end',
                 display: 'flex',
-                marginTop: '5%'
+                marginTop: {
+                    xs: '10%',
+                    sm: '15%',
+                    md: '10%',
+                    lg: '8%'
+                },
+                paddingBottom: {
+                    xs: '10%',
+                    sm: '10%',
+                    xl: '5%'
+                }
             }}
         >
-            <Typography variant="h1">About VPN Country Finder</Typography>
+            <Typography
+                variant="h1"
+                sx={{
+                    fontSize: {
+                        xs: '2rem', // petit écran (mobile)
+                        sm: '3rem', // écrans moyens
+                        md: '4rem', // grands écrans
+                        lg: '5rem', // très grands écrans
+                        xl: '6rem' // écrans extra larges
+                    }
+                }}
+            >
+                About VPN Country Finder
+            </Typography>
 
             <Stack
                 sx={{
@@ -32,7 +55,14 @@ export default function About() {
                 }}
                 spacing={6}
             >
-                <Typography variant="h5">
+                <Typography
+                    variant="h5"
+                    sx={{
+                        fontSize: {
+                            xs: '1.5rem' // petit écran (mobile)
+                        }
+                    }}
+                >
                     You are sitting on your sofa, ready to watch a [movie/series]. You open your favorite streaming platform, but{' '}
                     <span style={{ color: theme.palette.secondary.light }}> it's not in the catalog!</span>
                 </Typography>

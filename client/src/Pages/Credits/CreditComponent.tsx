@@ -45,8 +45,26 @@ export default function CreditComponent(props: CreditComponentProps) {
                     display: 'flex'
                 }}
             >
-                <Typography variant="h4">{props.title}</Typography>
-                <Typography variant="h6">{props.description}</Typography>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        fontSize: {
+                            xs: '1.75rem'
+                        }
+                    }}
+                >
+                    {props.title}
+                </Typography>
+                <Typography
+                    variant="h6"
+                    sx={{
+                        fontSize: {
+                            xs: '1rem'
+                        }
+                    }}
+                >
+                    {props.description}
+                </Typography>
             </Stack>
         </Stack>
     );

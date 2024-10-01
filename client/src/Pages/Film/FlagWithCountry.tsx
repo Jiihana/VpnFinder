@@ -3,9 +3,20 @@ import { Box, Stack, Typography } from '@mui/material';
 interface FlagWithCountryProps {
     flagPath: string;
     countryName: string;
+    maxLength?: number; // Optionnel, pour définir la limite du texte si nécessaire
 }
 
 const FlagWithCountry = (props: FlagWithCountryProps) => {
+    // Limite le texte à un certain nombre de caractères
+    const truncateText = (text: string, maxLength: number) => {
+        if (text.length > maxLength) {
+            return text.slice(0, maxLength) + '...';
+        }
+        return text;
+    };
+
+    const maxLength = props.maxLength || 10; // Définir la longueur maximale par défaut à 10
+
     return (
         <Stack
             direction="row"
@@ -32,7 +43,23 @@ const FlagWithCountry = (props: FlagWithCountryProps) => {
                     paddingTop: '20%'
                 }}
             />
-            <Typography variant="h5">{props.countryName}</Typography>
+            <Typography
+                variant="h5"
+                sx={{
+                    fontSize: {
+                        xs: '1rem',
+                        sm: '1.2rem',
+                        md: '1.2rem',
+                        lg: '1.2rem',
+                        xl: '1.2rem'
+                    },
+                    whiteSpace: 'nowrap', // Empêche le texte de s'étendre sur plusieurs lignes
+                    overflow: 'hidden', // Masque le débordement
+                    textOverflow: 'ellipsis' // Ajoute des points de suspension si nécessaire
+                }}
+            >
+                {truncateText(props.countryName, maxLength)}
+            </Typography>
         </Stack>
     );
 };

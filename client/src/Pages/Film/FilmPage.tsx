@@ -197,6 +197,9 @@ const FilmPage = () => {
                     md: 10,
                     lg: 15,
                     xl: 15
+                },
+                paddingBottom: {
+                    xs: '10%'
                 }
             }}
             display="flex"
