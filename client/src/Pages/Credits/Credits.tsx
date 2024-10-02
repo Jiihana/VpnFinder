@@ -18,6 +18,7 @@ export default function Credits() {
                     md: '10%',
                     lg: '8%'
                 },
+
                 paddingBottom: {
                     xs: '10%',
                     sm: '10%',
