@@ -12,11 +12,34 @@ export default function Credits() {
                 alignItems: 'center',
                 justifyContent: 'flex-start',
                 display: 'flex',
-                marginTop: '5%',
-                marginBottom: '5%'
+                marginTop: {
+                    xs: '10%',
+                    sm: '15%',
+                    md: '10%',
+                    lg: '8%'
+                },
+
+                paddingBottom: {
+                    xs: '10%',
+                    sm: '10%',
+                    xl: '5%'
+                }
             }}
         >
-            <Typography variant="h1">Thanks to:</Typography>
+            <Typography
+                variant="h1"
+                sx={{
+                    fontSize: {
+                        xs: '2rem', // petit écran (mobile)
+                        sm: '3rem', // écrans moyens
+                        md: '4rem', // grands écrans
+                        lg: '5rem', // très grands écrans
+                        xl: '6rem' // écrans extra larges
+                    }
+                }}
+            >
+                Thanks to:
+            </Typography>
             <Stack
                 spacing={5}
                 sx={{

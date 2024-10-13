@@ -25,8 +25,8 @@ export class AppHttpClient {
         return AppHttpClient.CallWithResponseValue<GetTvResultResponse>(`${GetTvResultRequest.Message}?tvId=${tvId}`);
     };
 
-    static GetWatchProviders = async (filmId: number): Promise<HttpResultValue<GetWatchProvidersResponse>> => {
-        return AppHttpClient.CallWithResponseValue<GetWatchProvidersResponse>(`${GetWatchProvidersRequest.Message}?filmId=${filmId}`);
+    static GetWatchProviders = async (filmId: number, type: string): Promise<HttpResultValue<GetWatchProvidersResponse>> => {
+        return AppHttpClient.CallWithResponseValue<GetWatchProvidersResponse>(`${GetWatchProvidersRequest.Message}?filmId=${filmId}&type=${type}`);
     };
 
     static async Call(url: string): Promise<HttpResult> {

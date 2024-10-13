@@ -50,7 +50,7 @@ const FilmPage = () => {
 
         const fetchWatchProviders = async () => {
             try {
-                const result = await AppHttpClient.GetWatchProviders(+filmId!);
+                const result = await AppHttpClient.GetWatchProviders(+filmId!, type!);
 
                 if (!result.success) {
                     console.error('Result != succes, fetch watch providers');
@@ -197,6 +197,9 @@ const FilmPage = () => {
                     md: 10,
                     lg: 15,
                     xl: 15
+                },
+                paddingBottom: {
+                    xs: '10%'
                 }
             }}
             display="flex"
