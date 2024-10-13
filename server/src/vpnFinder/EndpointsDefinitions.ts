@@ -158,7 +158,7 @@ export class EndpointsDefinitions {
             if (!response.ok) {
                 return {
                     success: false,
-                    message: `Un problème est survenu lors de l'appel à GetfilmResult pour les films`
+                    message: `Un problème est survenu lors de l'appel à GetWatchProviders pour les films`
                 };
             }
 
@@ -172,7 +172,7 @@ export class EndpointsDefinitions {
             console.log(e);
             return {
                 success: false,
-                message: `Un problème est survenu lors de l'appel à GetfilmResult pour les films, dans le catch`
+                message: `Un problème est survenu lors de l'appel à GetWatchProviders pour les films, dans le catch`
             };
         }
     }
