@@ -1,4 +1,4 @@
-import { Box, colors, Stack, styled, Typography } from '@mui/material';
+import { Box, Stack, styled, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FilmResultModel } from '../../Shared/Models/FilmResultModel';
@@ -32,7 +32,7 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
     const navigate = useNavigate();
     const [posterPath, setPosterPath] = useState(`https://image.tmdb.org/t/p/original${props.film.poster_path}`);
 
-    const type = props.film.isTv === true ? 'tv' : 'film';
+    const type = props.film.isTv === true ? 'tv' : 'movie';
 
     const navigateToFilmPage = () => {
         navigate(`/${type}/${props.film.id}`);
