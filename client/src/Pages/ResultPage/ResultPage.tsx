@@ -79,11 +79,11 @@ const ResultPage = () => {
                     xl: '5%'
                 },
                 gap: {
-                    xs: 5,
-                    sm: 9,
-                    md: 11,
-                    lg: 13,
-                    xl: 15
+                    xs: 3,
+                    sm: 4,
+                    md: 5,
+                    lg: 6,
+                    xl: 7
                 },
                 marginBottom: {
                     xs: '18%',
@@ -103,11 +103,11 @@ const ResultPage = () => {
                     alignItems: 'center',
                     justifyContent: 'start',
                     gap: {
-                        xs: 4,
-                        sm: 4,
-                        md: 6,
-                        lg: 8,
-                        xl: 10
+                        xs: 3,
+                        sm: 3,
+                        md: 4,
+                        lg: 5,
+                        xl: 6
                     }
                 }}
             >
@@ -154,9 +154,8 @@ const ResultPage = () => {
 
                 <Box
                     sx={{
-                        width: '50%',
+                        width: { xs: '90%', sm: '70%', md: '60%', lg: '50%', xl: '50%' },
                         height: 'auto',
-                        paddingLeft: '3%',
                         display: 'flex'
                     }}
                 >

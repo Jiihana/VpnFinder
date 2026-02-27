@@ -27,15 +27,25 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
                         <Header />
                         <Footer />
                         <Box
-                            display="flex"
                             sx={{
+                                position: 'fixed',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
                                 backgroundImage: 'url(/images/pages/home.png)',
-                                backgroundSize: 'auto',
+                                backgroundSize: 'cover',
                                 backgroundPosition: 'center',
                                 backgroundRepeat: 'no-repeat',
-                                backgroundAttachment: 'fixed',
+                                zIndex: -1
+                            }}
+                        />
+                        <Box
+                            display="flex"
+                            sx={{
                                 minHeight: '100vh',
-                                width: '100vw'
+                                width: '100%',
+                                position: 'relative'
                             }}
                         >
                             <Routes>

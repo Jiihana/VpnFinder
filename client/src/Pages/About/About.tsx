@@ -59,18 +59,40 @@ export default function About() {
                     variant="h5"
                     sx={{
                         fontSize: {
-                            xs: '1.5rem' // petit écran (mobile)
+                            xs: '1rem',
+                            sm: '1.2rem',
+                            md: '1.5rem'
                         }
                     }}
                 >
                     You are sitting on your sofa, ready to watch a [movie/series]. You open your favorite streaming platform, but{' '}
                     <span style={{ color: theme.palette.secondary.light }}> it's not in the catalog!</span>
                 </Typography>
-                <Typography variant="h5">
+                <Typography
+                    variant="h5"
+                    sx={{
+                        fontSize: {
+                            xs: '1rem',
+                            sm: '1.2rem',
+                            md: '1.5rem'
+                        }
+                    }}
+                >
                     You don't want to resort to piracy, and you're not keen on buying it. Maybe it's{' '}
                     <span style={{ color: theme.palette.secondary.light }}> available in another country</span> on the same streaming platform?
                 </Typography>
-                <Typography variant="h5">Find out where you should set your VPN to access it!</Typography>
+                <Typography
+                    variant="h5"
+                    sx={{
+                        fontSize: {
+                            xs: '1rem',
+                            sm: '1.2rem',
+                            md: '1.5rem'
+                        }
+                    }}
+                >
+                    Find out where you should set your VPN to access it!
+                </Typography>
             </Stack>
 
             <Stack
@@ -87,7 +109,16 @@ export default function About() {
                     padding: '2%'
                 }}
             >
-                <Typography variant="h5">
+                <Typography
+                    variant="h5"
+                    sx={{
+                        fontSize: {
+                            xs: '1rem',
+                            sm: '1.2rem',
+                            md: '1.5rem'
+                        }
+                    }}
+                >
                     VPN Country Finder was made so <span style={{ color: theme.palette.secondary.main }}>you don't waste any time</span> searching the
                     internet while <span style={{ color: theme.palette.secondary.main }}> your crush is waiting on the sofa</span>.
                 </Typography>
@@ -101,7 +132,18 @@ export default function About() {
                         justifyContent: 'center'
                     }}
                 >
-                    <Typography variant="h5">Consider donating if you liked it :)</Typography>
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            fontSize: {
+                                xs: '1rem',
+                                sm: '1.2rem',
+                                md: '1.5rem'
+                            }
+                        }}
+                    >
+                        Consider donating if you liked it :)
+                    </Typography>
                     <Box component="form" action="https://www.paypal.com/donate" method="post" target="_top" sx={{ textAlign: 'center' }}>
                         <input type="hidden" name="business" value="JE5LDTZSQW7BU" />
                         <input type="hidden" name="no_recurring" value="0" />

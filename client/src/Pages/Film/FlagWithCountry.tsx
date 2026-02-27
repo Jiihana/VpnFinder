@@ -15,12 +15,12 @@ const FlagWithCountry = (props: FlagWithCountryProps) => {
         return text;
     };
 
-    const maxLength = props.maxLength || 10; // Définir la longueur maximale par défaut à 10
+    const maxLength = props.maxLength || 20;
 
     return (
         <Stack
             direction="row"
-            spacing={2}
+            spacing={1}
             sx={{
                 height: 'auto',
                 width: '100%',
@@ -28,8 +28,9 @@ const FlagWithCountry = (props: FlagWithCountryProps) => {
                 justifyContent: 'flex-start',
                 display: 'flex',
                 backgroundColor: 'rgba(1, 1, 1, 0.5)',
-                marginRight: '10%',
-                marginBottom: '10%'
+                borderRadius: '8px',
+                padding: '4px 8px',
+                marginBottom: '8px'
             }}
         >
             <Box
@@ -38,24 +39,24 @@ const FlagWithCountry = (props: FlagWithCountryProps) => {
                     backgroundSize: 'contain',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    width: '30%',
-                    height: '100%',
-                    paddingTop: '20%'
+                    width: '30px',
+                    minWidth: '30px',
+                    height: '20px'
                 }}
             />
             <Typography
-                variant="h5"
+                variant="body1"
                 sx={{
                     fontSize: {
-                        xs: '1rem',
-                        sm: '1.2rem',
-                        md: '1.2rem',
-                        lg: '1.2rem',
-                        xl: '1.2rem'
+                        xs: '0.8rem',
+                        sm: '0.9rem',
+                        md: '1rem',
+                        lg: '1rem',
+                        xl: '1rem'
                     },
-                    whiteSpace: 'nowrap', // Empêche le texte de s'étendre sur plusieurs lignes
-                    overflow: 'hidden', // Masque le débordement
-                    textOverflow: 'ellipsis' // Ajoute des points de suspension si nécessaire
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                 }}
             >
                 {truncateText(props.countryName, maxLength)}

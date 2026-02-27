@@ -55,20 +55,21 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
             onClick={navigateToFilmPage}
             sx={{
                 width: '100%',
-                height: '30vh',
+                height: { xs: '25vh', sm: '28vh', md: '30vh' },
+                minHeight: { xs: '180px', sm: '200px', md: '220px' },
                 backgroundColor: 'rgba(1, 1, 1, 0.5)',
                 border: '2px solid white',
                 borderRadius: '20px',
-                padding: '0.5%',
+                padding: { xs: '2%', sm: '1%', md: '0.5%' },
                 cursor: 'pointer',
                 boxSizing: 'border-box',
                 overflow: 'hidden',
                 gap: {
-                    xs: '1.3rem',
-                    sm: '2rem',
-                    md: '2rem',
+                    xs: '0.8rem',
+                    sm: '1rem',
+                    md: '1.2rem',
                     lg: '1rem',
-                    xl: '0rem'
+                    xl: '0.5rem'
                 }
             }}
         >
@@ -87,15 +88,15 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
                 sx={{
                     height: '100%',
                     width: '75%',
-                    paddingBottom: '3%',
+                    paddingBottom: '2%',
                     paddingTop: '1%',
                     overflow: 'hidden',
                     gap: {
-                        xs: '1.75rem',
-                        sm: '2rem',
-                        md: '2.25rem',
-                        lg: '2.25rem',
-                        xl: '2.25rem'
+                        xs: '0.5rem',
+                        sm: '0.75rem',
+                        md: '1rem',
+                        lg: '1.25rem',
+                        xl: '1.5rem'
                     }
                 }}
             >
@@ -112,10 +113,11 @@ const ResultFilmComponent = (props: ResultFilmComponentProps) => {
                         sx={{
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
                             fontSize: {
-                                xs: '1.75rem',
-                                sm: '2rem',
-                                md: '2.25rem',
+                                xs: '1.2rem',
+                                sm: '1.5rem',
+                                md: '2rem',
                                 lg: '2.25rem',
                                 xl: '2.25rem'
                             }

@@ -10,8 +10,8 @@ interface CreditComponentProps {
 export default function CreditComponent(props: CreditComponentProps) {
     return (
         <Stack
-            direction="row"
-            spacing={5}
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={{ xs: 2, sm: 3, md: 5 }}
             sx={{
                 width: '100%',
                 height: 'auto',
@@ -21,7 +21,7 @@ export default function CreditComponent(props: CreditComponentProps) {
                 backgroundColor: 'rgba(1, 1, 1, 0.5)',
                 border: '2px solid white',
                 borderRadius: '20px',
-                padding: '0.5%'
+                padding: { xs: '4% 3%', sm: '2%', md: '1%' }
             }}
         >
             <Box
@@ -30,17 +30,18 @@ export default function CreditComponent(props: CreditComponentProps) {
                     backgroundSize: 'contain',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    width: '10%',
+                    width: { xs: '30%', sm: '15%', md: '10%' },
+                    minWidth: { xs: '80px', sm: '80px' },
                     height: 'auto',
-                    paddingTop: '5%'
+                    paddingTop: { xs: '15%', sm: '8%', md: '5%' }
                 }}
             />
             <Stack
-                spacing={5}
+                spacing={1}
                 sx={{
                     width: '100%',
                     height: 'auto',
-                    alignItems: 'start',
+                    alignItems: { xs: 'center', sm: 'start' },
                     justifyContent: 'space-between',
                     display: 'flex'
                 }}
@@ -49,8 +50,12 @@ export default function CreditComponent(props: CreditComponentProps) {
                     variant="h4"
                     sx={{
                         fontSize: {
-                            xs: '1.75rem'
-                        }
+                            xs: '1rem',
+                            sm: '1.2rem',
+                            md: '1.5rem',
+                            lg: '1.75rem'
+                        },
+                        textAlign: { xs: 'center', sm: 'left' }
                     }}
                 >
                     {props.title}
@@ -59,8 +64,12 @@ export default function CreditComponent(props: CreditComponentProps) {
                     variant="h6"
                     sx={{
                         fontSize: {
-                            xs: '1rem'
-                        }
+                            xs: '0.8rem',
+                            sm: '0.9rem',
+                            md: '1rem'
+                        },
+                        textAlign: { xs: 'center', sm: 'left' },
+                        wordBreak: 'break-word'
                     }}
                 >
                     {props.description}

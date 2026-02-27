@@ -131,7 +131,10 @@ const FilmPage = () => {
                         <Grid
                             item
                             key={countryCode}
-                            xs={3}
+                            xs={6}
+                            sm={4}
+                            md={3}
+                            lg={3}
                             sx={{
                                 display: 'flex'
                             }}
@@ -154,14 +157,15 @@ const FilmPage = () => {
             <Box
                 sx={{
                     width: '100%',
-                    height: '100%',
+                    minHeight: '80vh',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginTop: '10%',
-                    display: 'flex'
+                    marginTop: { xs: '20%', sm: '15%', md: '10%' },
+                    display: 'flex',
+                    padding: '0 5%'
                 }}
             >
-                <Loader message={'Loading infos ...'} />;
+                <Loader message={'Loading infos ...'} />
             </Box>
         );
     }
@@ -171,14 +175,15 @@ const FilmPage = () => {
             <Box
                 sx={{
                     width: '100%',
-                    height: '100%',
+                    minHeight: '80vh',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginTop: '10%',
-                    display: 'flex'
+                    marginTop: { xs: '20%', sm: '15%', md: '10%' },
+                    display: 'flex',
+                    padding: '0 5%'
                 }}
             >
-                <Loader message={'404 not found'} />;
+                <Loader message={'404 not found'} />
             </Box>
         );
     }
@@ -192,11 +197,11 @@ const FilmPage = () => {
                 justifyContent: 'center',
                 marginTop: { xs: '20%', sm: '15%', md: '10%', lg: '8%', xl: '5%' },
                 gap: {
-                    xs: 5,
-                    sm: 8,
-                    md: 10,
-                    lg: 15,
-                    xl: 15
+                    xs: 3,
+                    sm: 4,
+                    md: 5,
+                    lg: 6,
+                    xl: 7
                 },
                 paddingBottom: {
                     xs: '10%'
@@ -218,7 +223,7 @@ const FilmPage = () => {
 
             <Stack
                 display="flex"
-                spacing={10}
+                spacing={{ xs: 3, sm: 4, md: 5 }}
                 sx={{
                     width: {
                         xs: '95%',
@@ -276,6 +281,7 @@ const FilmPage = () => {
                                 <Select
                                     value={selectedWatchProvider}
                                     onChange={handleChange}
+                                    MenuProps={{ disableScrollLock: true }}
                                     sx={{
                                         fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' } // Taille de texte responsive
                                     }}
@@ -302,9 +308,11 @@ const FilmPage = () => {
                 {availableCountries.length !== 0 ? (
                     <Grid
                         container
+                        spacing={1}
                         sx={{
                             width: '100%',
-                            height: 'auto'
+                            height: 'auto',
+                            padding: '1%'
                         }}
                     >
                         {availableCountries}

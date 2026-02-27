@@ -6,7 +6,7 @@ const Accueil = () => {
 
     return (
         <Stack
-            spacing={15}
+            spacing={{ xs: 4, sm: 6, md: 8, lg: 10, xl: 12 }}
             sx={{
                 width: '100%',
                 height: 'auto',
@@ -26,7 +26,7 @@ const Accueil = () => {
         >
             <Stack
                 display="flex"
-                spacing={10}
+                spacing={{ xs: 4, sm: 5, md: 6, lg: 8, xl: 10 }}
                 sx={{
                     width: '100%',
                     height: 'auto',
@@ -77,9 +77,8 @@ const Accueil = () => {
 
                 <Box
                     sx={{
-                        width: '50%',
+                        width: { xs: '90%', sm: '70%', md: '60%', lg: '50%', xl: '50%' },
                         height: 'auto',
-                        paddingLeft: '3%',
                         display: 'flex'
                     }}
                 >

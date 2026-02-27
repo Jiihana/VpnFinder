@@ -23,7 +23,7 @@ const Footer = () => {
                     width: '50%',
                     fontSize: {
                         xs: '0.6rem', // petit écran (mobile)
-                        sm: '0.6rrem', // écrans moyens
+                        sm: '0.7rem', // écrans moyens
                         md: '0.8rem', // grands écrans
                         lg: '0.8rem', // très grands écrans
                         xl: '0.8rem' // écrans extra larges
@@ -39,7 +39,7 @@ const Footer = () => {
                     width: '50%',
                     fontSize: {
                         xs: '0.6rem', // petit écran (mobile)
-                        sm: '0.6rrem', // écrans moyens
+                        sm: '0.7rem', // écrans moyens
                         md: '0.8rem', // grands écrans
                         lg: '0.8rem', // très grands écrans
                         xl: '0.8rem' // écrans extra larges
