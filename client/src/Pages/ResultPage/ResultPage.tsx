@@ -188,7 +188,12 @@ const ResultPage = () => {
                             control={<Switch checked={seriesOnly} onChange={handleChange} />}
                             label="Series only"
                             labelPlacement="end"
-                            sx={{ paddingLeft: '1%' }}
+                            sx={{
+                                paddingLeft: '1%',
+                                '& .MuiFormControlLabel-label': {
+                                    textShadow: '2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5)'
+                                }
+                            }}
                         />
                     </FormGroup>
                 </Box>

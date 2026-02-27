@@ -14,5 +14,16 @@ export const themeOptions: ThemeOptions = {
             dark: '#415067'
         }
     },
-    typography: { fontFamily: ['Space Grotesk'].join(',') }
+    typography: {
+        fontFamily: ['Space Grotesk'].join(','),
+        h1: {
+            textShadow: '2px 2px 10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.5)'
+        },
+        h2: {
+            textShadow: '2px 2px 10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.5)'
+        },
+        h3: {
+            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.4)'
+        }
+    }
 };
