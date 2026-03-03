@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Stack, useTheme, Link, Button } from '@mui/material';
 import CreditComponent from './CreditComponent';
 
-const PERSONAL_SITE_URL = '#'; // TODO: replace with actual URL
+const PERSONAL_SITE_URL = 'http://jihana.ddns.net:49154/';
 
 export default function Credits() {
     const theme = useTheme();
