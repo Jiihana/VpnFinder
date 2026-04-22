@@ -5,7 +5,7 @@ import { GetTvResultsRequest, GetTvResultsResponse } from '../Shared/RequestsRes
 import { GetWatchProvidersRequest, GetWatchProvidersResponse } from '../Shared/RequestsResponses/GetWatchProviders';
 
 export class AppHttpClient {
-    private static baseUrl = `http://${process.env.REACT_APP_CLIENT_URL}:${process.env.REACT_APP_GAMESERVER_PORT}`;
+    private static baseUrl = process.env.REACT_APP_API_URL;
 
     static GetFilms = async (title: string, includeAdult: string): Promise<HttpResultValue<GetFilmsResultsResponse>> => {
         return AppHttpClient.CallWithResponseValue<GetFilmsResultsResponse>(
